@@ -1,4 +1,4 @@
-cd ~/Documents/CMEECourseWork/TheMulQuaBio-master/content/data/fasta            	#1 locate correct directory
+cd data/fasta            	                            #1 locate correct directory
 wc -l 407228326.fasta 									#2 count no. of lines
 wc -l 407228412.fasta 									#3 count no. of lines
 wc -l E.coli.fasta    									#4 count no. of lines
@@ -6,20 +6,12 @@ grep -i -w -v E.coli E.coli.fasta 							#5 print everything starting from the s
 grep -i -w -v E.coli E.coli.fasta | wc -m 						#6 count sequence length of genome by counting no. of characters
 grep -i -w -v E.coli E.coli.fasta | tr -d ‘\n’ 						#7 remove first line and newline characters
 grep -i -w -v E.coli E.coli.fasta | tr -d ‘\n’ | grep -o -i ATGC E.coli.fasta | wc -l 	#8 count the number of ATGC in genome
-grep -o -i "[A|T]" E.coli.fasta | wc -l 						#9 count the number of A and T in genome
-grep -o -i "[G|C]" E.coli.fasta | wc -l 						#10 count the number of G and C in genome
-ATnum=$(grep -o -i "[A|T]" E.coli.fasta | wc -l) 					#11 save the sum of A and T as ATnum
-GCnum=$(grep -o -i "[G|C]" E.coli.fasta | wc -l) 					#12 save the sum of G and C as GCnum
-echo "scale=5; $ATnum/$GCnum" | bc 			   				#13 divide the sum of AT by GC, with 5 decimal places
-cd ~/Documents/CMEECourseWork								#14 move to CMEECourseWork directory
-mv UnixPrac1.txt week1/code		    						#15 Save UnixPrac1.txt in the code directory
+ATnum=$(grep -o -i "[A|T]" E.coli.fasta | wc -l) 					#9 count the number of A and T, then save the sum of A and T as ATnum
+GCnum=$(grep -o -i "[G|C]" E.coli.fasta | wc -l) 					#10 count the number of G and C, then save the sum of G and C as GCnum
+echo "scale=5; $ATnum/$GCnum" | bc 			   				#11 divide the sum of AT by GC, with 5 decimal places
+cd ../../								                    #12 move to week1 directory
+mv UnixPrac1.txt code		    						    #13 Save UnixPrac1.txt in the code directory
 
-
-
-
-../data
-
-../results
 
 
 
