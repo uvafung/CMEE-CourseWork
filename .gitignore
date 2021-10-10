@@ -1,2 +1,9 @@
 *~ 
 *.tmp
+
+#Ignore files and directories
+./week1/code/*.tif
+./week1/sandbox/
+./week1/code/*.log
+./week1/code/.txt
+
