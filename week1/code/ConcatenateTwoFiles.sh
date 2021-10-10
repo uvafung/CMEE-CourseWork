@@ -19,7 +19,7 @@ cat $2 >> $3
 echo "Merged files is"
 cat $3
 
-# move concatednated file into results
+# move concatenated file into results
 echo "Move concatenated file into results folder"
 mv $3 ../results/
 
