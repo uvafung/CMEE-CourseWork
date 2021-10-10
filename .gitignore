@@ -7,3 +7,7 @@
 ./week1/code/*.log
 ./week1/code/.txt
 
+#Keep gitkeep
+!./week1/results/.gitkeep
+!./week1/sandbox/.gitkeep
+
