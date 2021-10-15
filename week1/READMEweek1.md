@@ -7,10 +7,11 @@ Data required to run the coding scripts can be downloaded from the following [re
 
 ***
 
-##### Languages:
+#### Languages:
 bash version 3.2.57(1)
 
-##### Dependencies:
+***********
+#### Dependencies:
 A UNIX based Operating System is needed to run the projects. Linux and Mac OS are both possible options. Linux Ubuntu can be downloaded [here](https://ubuntu.com/)
 
 Other dependencies include LaTeX and Git:
@@ -19,10 +20,10 @@ LaTeX version pdfTeX 3.141592653-2.6-1.40.22
 
 Git version 2.33.0
 
-
+******************
 ##### Installation:
 
-Install LaTeX with the following code:
+###### Install  LaTeX with the following code:
 
 *for Linux*
 ```Bash
@@ -36,7 +37,7 @@ brew install texlive-full texlive-fonts-recommended texlive-pictures texlive-lat
 ```           
 
 
-Install Git with the following code:
+##### Install Git with the following code:
 
 *for Linux*
 ```bash
@@ -69,7 +70,7 @@ git config --list
 
 ***********
 
-##### Project structure and usage:
+#### Project structure and usage:
 This project contains four folder: code, data, results, sandbox; and a README file.
 
 Code stores all the codes written for week 1 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
@@ -98,6 +99,6 @@ Code stores all the codes written for week 1 practicals. Data stores all the dat
 
     Temperatures --
         Run csvtospace.sh to convert csv files in Temperature folder into space separated text files
-
-##### Author name and contact: 
+*****************
+##### Author name and contact:
 Uva Fung uf21@imperial.ac.uk
