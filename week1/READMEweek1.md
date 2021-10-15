@@ -21,7 +21,7 @@ LaTeX version pdfTeX 3.141592653-2.6-1.40.22
 Git version 2.33.0
 
 ******************
-##### Installation:
+#### Installation:
 
 ###### Install  LaTeX with the following code:
 
@@ -37,7 +37,7 @@ brew install texlive-full texlive-fonts-recommended texlive-pictures texlive-lat
 ```           
 
 
-##### Install Git with the following code:
+###### Install Git with the following code:
 
 *for Linux*
 ```bash
@@ -100,5 +100,5 @@ Code stores all the codes written for week 1 practicals. Data stores all the dat
     Temperatures --
         Run csvtospace.sh to convert csv files in Temperature folder into space separated text files
 *****************
-##### Author name and contact:
+#### Author name and contact:
 Uva Fung uf21@imperial.ac.uk
