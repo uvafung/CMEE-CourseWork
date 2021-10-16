@@ -2,12 +2,12 @@
 *.tmp
 
 #Ignore files and directories
-./week1/code/*.tif
-./week1/sandbox/
-./week1/code/*.log
-./week1/code/.txt
+week1/code/*.tif
+week1/sandbox/
+week1/code/*.log
+week1/code/.txt
 
 #Keep gitkeep
-!./week1/results/.gitkeep
-!./week1/sandbox/.gitkeep
+!week1/results/.gitkeep
+!week1/sandbox/.gitkeep
 
