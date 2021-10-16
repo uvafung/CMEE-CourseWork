@@ -1,18 +1,25 @@
-cd data/fasta            	                            #1 locate correct directory
-wc -l 407228326.fasta 									#2 count no. of lines
-wc -l 407228412.fasta 									#3 count no. of lines
-wc -l E.coli.fasta    									#4 count no. of lines
-grep -i -w -v E.coli E.coli.fasta 							#5 print everything starting from the second line
-grep -i -w -v E.coli E.coli.fasta | wc -m 						#6 count sequence length of genome by counting no. of characters
-grep -i -w -v E.coli E.coli.fasta | tr -d ‘\n’ 						#7 remove first line and newline characters
-grep -i -w -v E.coli E.coli.fasta | tr -d ‘\n’ | grep -o -i ATGC E.coli.fasta | wc -l 	#8 count the number of ATGC in genome
-ATnum=$(grep -o -i "[A|T]" E.coli.fasta | wc -l) 					#9 count the number of A and T, then save the sum of A and T as ATnum
-GCnum=$(grep -o -i "[G|C]" E.coli.fasta | wc -l) 					#10 count the number of G and C, then save the sum of G and C as GCnum
-echo "scale=5; $ATnum/$GCnum" | bc 			   				#11 divide the sum of AT by GC, with 5 decimal places
-cd ../../								                    #12 move to week1 directory
-mv UnixPrac1.txt code		    						    #13 Save UnixPrac1.txt in the code directory
+#1 locate correct directory
+cd data/fasta
 
+#2 count no. of lines            	                            
+wc -l 407228326.fasta; wc -l 407228412.fasta; wc -l E.coli.fasta
 
+#3 print everything starting from the second line
+grep -i -w -v E.coli E.coli.fasta									
+ 									
+#4 count sequence length of genome by counting no. of characters			
+grep -i -w -v E.coli E.coli.fasta | wc -m
 
+#5 remove first line and newline characters, then count the number of ATGC in genome
+grep -i -w -v E.coli E.coli.fasta | tr -d ‘\n’ | grep -o -i ATGC E.coli.fasta | wc -l 	 
+
+#6 count the number of A and T, then save the sum of A and T as ATnum; count the number of G and C, then save the sum of G and C as GCnum; then divide the sum of AT by GC, with 5 decimal places
+ATnum=$(grep -o -i "[A|T]" E.coli.fasta | wc -l); GCnum=$(grep -o -i "[G|C]" E.coli.fasta | wc -l); echo "scale=5; $ATnum/$GCnum" | bc					
+
+#7 move to week1 directory			   				
+cd ../../								                    
+
+#8 Save UnixPrac1.txt in the code directory
+mv UnixPrac1.txt code		    						    
 
 

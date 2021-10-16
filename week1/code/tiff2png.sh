@@ -2,7 +2,7 @@
 # Author: Uva Fung uf21imperial.ac.uk
 # Script: tiff2png.sh
 # Description: convert tiff to png
-# Date: Oct 2021
+# Date: Oct 8 2021
 #
 # error message when no file is entered
 if [[ -z "$1" ]]; then
