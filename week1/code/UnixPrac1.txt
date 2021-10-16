@@ -15,11 +15,6 @@ grep -i -w -v E.coli E.coli.fasta | tr -d ‘\n’ | grep -o -i ATGC E.coli.fast
 
 #6 count the number of A and T, then save the sum of A and T as ATnum; count the number of G and C, then save the sum of G and C as GCnum; then divide the sum of AT by GC, with 5 decimal places
 ATnum=$(grep -o -i "[A|T]" E.coli.fasta | wc -l); GCnum=$(grep -o -i "[G|C]" E.coli.fasta | wc -l); echo "scale=5; $ATnum/$GCnum" | bc					
-
-#7 move to week1 directory			   				
-cd ../../								                    
-
-#8 Save UnixPrac1.txt in the code directory
-mv UnixPrac1.txt code		    						    
+							                    	    						    
 
 
