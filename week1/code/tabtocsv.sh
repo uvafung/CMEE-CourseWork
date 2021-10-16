@@ -15,11 +15,11 @@ fi
 
 # if a file is entered, continue with converting tab file to csv file
 echo "Creating a comma delimited version of $1 ..."
-cat $1 | tr -s "\t" "," >> $1
+cat $1 | tr -s "\t" "," >> $1.csv
 echo "Done!"
 
 # move space separated file into results
 echo "Move space separated file into results folder"
-mv $1 ../results/
+mv $1.csv ../results/
 
 #exit
