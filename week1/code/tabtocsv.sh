@@ -18,8 +18,14 @@ echo "Creating a comma delimited version of $1 ..."
 cat $1 | tr -s "\t" "," >> $1.csv
 echo "Done!"
 
-# move space separated file into results
+# rename it such that only .csv extension is kept
+mv "$1.csv" "${1%.txt}.csv" >> $1
+
+# move csv file into results
 echo "Move space separated file into results folder"
-mv $1.csv ../results/
+mv ${1%.txt}.csv ../results/
+
+
+
 
 #exit
