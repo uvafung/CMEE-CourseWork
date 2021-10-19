@@ -18,7 +18,7 @@ def main(argv):
     return 0
 
 """import seqeunces from new file..."""
-with open('seq.txt','r') as f:   # open seq.txt which stores the two sequences
+with open('../data/seq.txt','r') as f:   # open seq.txt which stores the two sequences
     line = f.readlines()         
     seq_line = []     #create a new list for storing the seqeunces
     
