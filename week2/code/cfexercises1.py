@@ -50,7 +50,7 @@ def foo_4(x):         # print + update results in a loop (range 1, x+1)
 
 
 def foo_5(x):         # recursive function that calculates the factorial of x
-    """Calculate the factorial of x"""
+    """Calculate the factorial of x. The factorial of x is ..."""
     if x == 1:
         return 1
     return x * foo_5(x-1)
