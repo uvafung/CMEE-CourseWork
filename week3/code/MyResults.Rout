@@ -1,0 +1,35 @@
+
+R version 3.6.0 (2019-04-26) -- "Planting of a Tree"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R は、自由なソフトウェアであり、「完全に無保証」です。 
+一定の条件に従えば、自由にこれを再配布することができます。 
+配布条件の詳細に関しては、'license()' あるいは 'licence()' と入力してください。 
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+'demo()' と入力すればデモをみることができます。 
+'help()' とすればオンラインヘルプが出ます。 
+'help.start()' で HTML ブラウザによるヘルプがみられます。 
+'q()' と入力すれば R を終了します。 
+
+> # A simple script to illustrate R input-output.
+> # Run line by line and check inputs outputs to understand what is happening
+> 
+> MyData <- read.csv("../data/trees.csv", header = TRUE) # import with headers
+> write.csv(MyData, "../results/MyData.csv") # write it out as a new file
+> write.table(MyData[1,], file = "../results/MyData.csv", append = TRUE) # append to it
+ 警告メッセージ: 
+ write.table(MyData[1, ], file = "../results/MyData.csv", append = TRUE) で: 
+   ファイルに列名を加えます 
+> write.csv(MyData, "../results/MyData.csv", row.names = TRUE) # write row names
+> write.table(MyData, "../results/MyData.csv", col.names = FALSE) #ignore column names
+> 
+> proc.time()
+   ユーザ   システム       経過  
+     0.154      0.045      0.210 
