@@ -21,8 +21,10 @@ In each folder, there are four subfolders: code, data, results, sandbox. Code st
 
 ###### Coding scripts and data stored in the weekly folders:
 Week 1: For week 1 practicals -- including UNIX, shell scripts, LaTeX
-Week 2: For week 2 practicals -- Python scripts
-Week 3: For week 3 practicals -- R 
+
+Week 2: For week 2 practicals -- Python I scripts
+
+Week 3: For week 3 practicals -- R
 
 
 
