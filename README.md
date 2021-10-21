@@ -20,7 +20,9 @@ This project contains 10 folders, one for each week. Description and instruction
 In each folder, there are four subfolders: code, data, results, sandbox. Code stores all the codes written for each week's practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
 
 ###### Coding scripts and data stored in the weekly folders:
-Week 1: For week 1 practical -- including UNIX, shell scripts, LaTeX
+Week 1: For week 1 practicals -- including UNIX, shell scripts, LaTeX
+Week 2: For week 2 practicals -- Python scripts
+Week 3: For week 3 practicals -- R 
 
 
 
