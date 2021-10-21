@@ -41,16 +41,16 @@ Code stores all the codes written for week 2 practicals. Data stores all the dat
         cfexercise2.py: functions hello_1() to hello_6()
         control_flow.py: control flow script
         debugme.py: debug testing
-        dictionary.py:
-        lc1.py:
-        lc2.py:
-        loops.py:
-        oaks_debugme.py:
+        dictionary.py: populate a dictionary that maps order names to sets of taxa
+        lc1.py: create lists of bird latin names, common names and mean body mass
+        lc2.py: create lists of rainfall in different months
+        loops.py: loops example
+        oaks_debugme.py: identify whether a tree species is an oak (Quercus)
         oaks.py: finds just those taxa that are oak trees from a list of species
         sysargv.py: system argument testing
         test_control_flow.py: control_flow.py with doctest
-        tuple.py:
-        using_name.py: testing __name__ == 
+        tuple.py: create tuples of bird latin names, common names and mean body mass
+        using_name.py: testing __name__ == "__main__"
 
 
 ###### Files in data:
