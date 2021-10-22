@@ -10,28 +10,25 @@ glimpse(MyData1) # shows first few rows of MyData matrix
 view(MyData1)
 dim(MyData1) # shows dimesions of MyData matrix
 
+MyData1 <- MyData1 %>%
+  set_names(slice(.,1)) %>% #set row 1 as column name
+  slice(-1) #remove row 1 from MyData1
 
-MyData1[MyData1 == ""] = 0 # replace absent species with 0
-view(MyData1) # confirm that "space"" is replaced by 0
-
-
-TempData1 <- as_tibble(MyData1[-1,],stringsAsFactors = F) #convert to tibble, does not include 1st row
-view(TempData1)
-
-MyWrangledData1 <- pivot_longer(TempData1, cols=5:45, names_to="Species", values_to="Count")
-MyWrangledData1
+MyWrangledData1 <- pivot_longer(MyData1, cols=5:45, names_to="Species", values_to="Count") # convert to wide format
 view(MyWrangledData1)
-colnames(MyWrangledData1) <- MyData1[1,1:4]
-colnames(MyWrangledData1)[5] <- "Species"
-colnames(MyWrangledData1)[6] <- "Count"
-MyWrangledData1
 
-MyWrangledData1$"Cultivation" <- as.factor(MyWrangledData1$"Cultivation")
-MyWrangledData1$"Block" <- as.factor(MyWrangledData1$"Block")
-MyWrangledData1$"Plot" <- as.factor(MyWrangledData1$"Plot")
-MyWrangledData1$"Quadrat" <- as.factor(MyWrangledData1$"Quadrat")
-MyWrangledData1$"Count" <- as.integer(MyWrangledData1$"Count")
+MyWrangledData1 <- MyWrangledData1 %>%
+  mutate_all(list(~na_if(.,""))) %>% #replace blank with NA
+  mutate_all(funs(replace_na(.,0))) # replace NA with 0
 
+view(MyWrangledData1) # check if blank has been replaced with 0
+
+
+MyWrangledData1 <- MyWrangledData1 %>%
+  dplyr::mutate_at(1:5, as.factor) # save columns 1:5 as factors
+MyWrangledData1$"Count" <- as.integer(MyWrangledData1$"Count") # save Count as integer
+
+str(MyWrangledData1)
 glimpse(MyWrangledData1)
 view(MyWrangledData1)
 dim(MyWrangledData1)
