@@ -4,6 +4,8 @@
 # Desc: conditional modules for python
 # Date: Oct 13 2021
 
+"""conditonal modules for python"""
+
 __author__ = 'Uva Fung (@imperial.ac.uk)'
 __version__ = '0.0.1'
 
@@ -60,7 +62,7 @@ def foo_5(x):         # recursive function that calculates the factorial of x
 
 def foo_6(x):         # calculate factorial of x in a different way
     """Calculate the factorial of x"""
-    initial_x = x
+    initial_x = x   # save the original value of x as a temporary variable
     facto = 1
     if x == 1:
         return "The factorial of 1 is 1"
@@ -71,6 +73,7 @@ def foo_6(x):         # calculate factorial of x in a different way
 
 
 def main(argv):
+    """test agurments"""
     #x=argv[1]
     #print(foo_5(x))
     print(foo_1(16))

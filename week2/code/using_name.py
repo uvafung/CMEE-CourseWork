@@ -5,6 +5,8 @@
 # Date: Oct 13 2021
 # Filename: using_name.py
 
+"""using __names__ for python programs"""
+
 if __name__ == '__main__':
     print('This program is being run by itself')
 else:

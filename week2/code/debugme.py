@@ -4,7 +4,10 @@
 # Desc: debugging
 # Date: Oct 15 2021
 
+"""testing debugging in python"""
+
 def buggyfunc(x):
+    """testing debugging via mathematical calculations"""
     y = x
     for i in range(x):
         try:

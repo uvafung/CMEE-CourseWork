@@ -4,6 +4,8 @@
 # Desc: simple boilerplate for python programs
 # Date: Oct 13 2021
 
+"""boilerplate for python"""
+
 __appname__ = '[application name here]'
 __author__ = 'Your Name (your email address)'
 __version__ = '0.0.1'
@@ -23,5 +25,5 @@ def main(argv):
 if __name__ == "__main__":
     """Make sure the "main" function is called from command line"""
     status = main(sys.argv)
-    sys.exit("I am exiting right now!")
+    sys.exit(status)
 

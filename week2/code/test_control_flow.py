@@ -4,6 +4,9 @@
 # Desc: unit testing with control flow
 # Date: Oct 14 2021
 
+"""unit testing with flow control"""
+
+
 __author__ = 'Uva Fung (uf21@imperial.ac.uk)'
 __version__ = '0.0.1'
 
@@ -39,7 +42,8 @@ def even_or_odd(x=0): #if not specified, x should take value 0
 
 
 ## functions ##
-def main(argv):          
+def main(argv):     
+    """test argument"""     
     print(even_or_odd(22))
     print(even_or_odd(33))
     return 0

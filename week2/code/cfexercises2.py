@@ -1,5 +1,7 @@
 # Loops and conditionals combined
 
+"""testing for and while loop in python"""
+
 # for j = 0-11, if j is completely divided by 3, print hello (repeat until j = 11)
 for j in range(12):
     if j % 3 == 0:

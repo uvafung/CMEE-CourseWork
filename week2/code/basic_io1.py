@@ -1,6 +1,9 @@
 ###################
 # FILE INPUT
 ###################
+
+"""Codes that can be used to import into python"""
+
 # Open a file for reading
 with open('../sandbox/test.txt', 'r') as f:
 # use "implicit" for loop:

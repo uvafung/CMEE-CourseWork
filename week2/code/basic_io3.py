@@ -1,6 +1,9 @@
 #####################
 # STORING OBJECTS
 ####################
+
+"""Save an object using pickle (machine-readable format)"""
+
 # To save an object (even complex) for later use
 my_dictionary = {"a key": 10, "another key": 11}
 

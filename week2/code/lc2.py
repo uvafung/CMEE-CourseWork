@@ -14,6 +14,8 @@ rainfall = (('JAN',111.4),
             ('DEC',142.2),
            )
 
+"""create list of months with different rainfall using loops and comprehensions"""
+
 # create a list of months with rain <100 with conventional loops
 
 # (1) Use a list comprehension to create a list of month,rainfall tuples where

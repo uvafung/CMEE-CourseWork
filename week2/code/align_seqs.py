@@ -4,6 +4,8 @@
 # Desc: align seqeunces
 # Date: Oct 18 2021
 
+"""Align two seqeunces and gives the best alignment as output"""
+
 __appname__ = 'AlignSequence'
 __author__ = 'Uva Fung uf21@imperial.ac.uk'
 __version__ = '0.0.1'

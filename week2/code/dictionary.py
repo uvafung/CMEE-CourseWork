@@ -19,9 +19,10 @@ taxa = [ ('Myotis lucifugus','Chiroptera'),
 #  OR,
 # 'Chiroptera': {'Myotis lucifugus'} ... etc
 
+"""map order names to sets of taxa in dictionary"""
 
 reorder_taxa = [(item[1], item[0]) for item in taxa]    #swap the order of order and species name
-print(reorder_taxa)
+
 
 taxa_dic = {}
 

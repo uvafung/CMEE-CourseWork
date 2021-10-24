@@ -45,8 +45,8 @@ Code stores all the codes written for week 2 practicals. Data stores all the dat
         lc1.py: create lists of bird latin names, common names and mean body mass
         lc2.py: create lists of rainfall in different months
         loops.py: loops example
-        oaks_debugme.py: identify whether a tree species is an oak (Quercus)
         oaks.py: finds just those taxa that are oak trees from a list of species
+        scope.py: tesing global and local variables
         sysargv.py: system argument testing
         test_control_flow.py: control_flow.py with doctest
         tuple.py: create tuples of bird latin names, common names and mean body mass
@@ -56,7 +56,7 @@ Code stores all the codes written for week 2 practicals. Data stores all the dat
 ###### Files in data:
     bodymass.csv
     JustOaksData.csv
-    test.csv.csv
+    testcsv.csv
     TestOaksData.csv
     seq.txt
 

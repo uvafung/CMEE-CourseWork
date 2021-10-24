@@ -2,9 +2,11 @@
 # Author: Uva Fung uf21@imperial.ac.uk
 # Script: control_flow.py
 # Desc: control flow for python programs
-# Date: Oct 13 2021
+# Date: Oct 24 2021
 
-__author__ = 'Samraat Pawar (s.pawar@imperial.ac.uk)'
+"""control flow for python"""
+
+__author__ = 'Uva Fung (u.fung21@imperial.ac.uk)'
 __version__ = '0.0.1'
 
 

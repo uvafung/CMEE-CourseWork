@@ -2,3 +2,7 @@ CAATTCGGAT
 ATCGCCGGATTACGGG
 
 The best score is 5
+CAATTCGGAT
+ATCGCCGGATTACGGG
+
+The best score is 5
