@@ -12,7 +12,7 @@ M <- matrix(rnorm(N * N), N, N) # Build the matrix
 eigvals <- eigen(M)$values # Find the eigenvalues
 
 eigDF <- data.frame("Real" = Re(eigvals), "Imaginary" = Im(eigvals)) # Build a dataframe
-
+s
 my_radius <- sqrt(N) # The radius of the circle is sqrt(N)
 
 ellDF <- build_ellipse(my_radius, my_radius) # Dataframe to plot the ellipse
@@ -34,11 +34,10 @@ p <- p + geom_polygon(data = ellDF, aes(x = Real, y = Imaginary, alpha = 1/20, f
 p
 
 
-pdf("../results/Girko.pdf", 
-    11.7, 8.3) 
+pdf("../results/Girko.pdf", 11.7, 8.3) 
 p
-
-legend('topleft',c('Predators','Prey'), # Add legend
-       fill=c(rgb(1, 0, 0, 0.5), rgb(0, 0, 1, 0.5))) 
 dev.off()
+
+
+
 
