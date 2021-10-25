@@ -1,123 +1,132 @@
+#Write a script that draws and saves three figures, 
+# each containing subplots of distributions of predator mass, prey mass, 
+# and the size ratio of prey mass over predator mass by feeding interaction type. 
+# Use logarithms of masses (or size ratios)for all three plots. 
+# In addition, the script should calculate the (log) mean and median predator mass, 
+# prey mass and predator-prey size-ratios to a csv file.
+
 MyDF <- read.csv("../data/EcolArchives-E089-51-D1.csv")
-dim(MyDF)
-str(MyDF)
-head(MyDF)
-require(tidyverse) #load tidyverse
-dplyr::glimpse(MyDF)
-MyDF$Type.of.feeding.interaction <- as.factor(MyDF$Type.of.feeding.interaction) # save it as a factor
-MyDF$Location <- as.factor(MyDF$Location) # save as a factor
-str(MyDF)
 
-### Scatterplot ###
-plot(MyDF$Predator.mass, MyDF$Prey.mass) # scatterplot
-plot(log(MyDF$Predator.mass),log(MyDF$Prey.mass)) # scatterplot with log scale
-plot(log10(MyDF$Predator.mass),log10(MyDF$Prey.mass)) # scatterplot with log10 scale
-plot(log10(MyDF$Predator.mass),log10(MyDF$Prey.mass), pch=20) # scatterplot with log10 scale, change marker
-plot(log10(MyDF$Predator.mass),log10(MyDF$Prey.mass), pch=20, 
-     xlab = "Predator Mass (g)", ylab ="Prey Mass (g)"    # add x and y axis labels
-     )
+##### Add a column to store the ratio output #####
+MyDF <- transform(MyDF, Predator.Prey.Ratio = Predator.mass / Prey.mass)
+View(MyDF)
 
-### Historgram ###
-hist(MyDF$Predator.mass)
-hist(log10(MyDF$Predator.mass),
-     xlab = "log10(PredatorMass (g))", ylab = "Count") # change to log10 scale, add labels
-hist(log10(MyDF$Predator.mass),
-     xlab = "log10(PredatorMass (g))", ylab = "Count",
-     col = "lightblue", border = "pink") # change borders and colour
-hist(log10(MyDF$Prey.mass),
-     xlab = "log10(PreyMass (g))", ylab = "Count",
-     col = "lightblue", border = "pink") # change borders and colour
+##### Subplots for Predator mass distribution by feeding interaction types #####
+pdf("../results/Pred_Subplots.pdf", 11.7, 8.3) 
+par(mfrow=c(3,2))
 
-### Subplots ###
-par(mfcol=c(2,1)) #initialize multi-panel plot
-par(mfg=c(1,1)) # specify which subplot to use first
-hist(log10(MyDF$Predator.mass),
-     xlab = "log10(Predator Mass (g))", ylab = "Count", col = "lightblue", border = "pink", 
-     main = 'Predator') # main = Add title
-par(mfg = c(2,1)) # Second sub-plot
-hist(log10(MyDF$Prey.mass),
-     xlab = "log10(Prey Mass (g))", ylab = "Count", col = "lightgreen", border = "pink", 
-     main = 'Prey') # main = Add title
+par(mfg=c(1,1))
+Pred_subplot1 <- hist(log10(MyDF$Predator.mass[MyDF$Type.of.feeding.interaction == "insectivorous"]), 
+     xlab= "log10(Predator Mass (g))", ylab = "Abundance", 
+     main = "Distribution of Insectivorous Predator Mass")
 
-### Overlaying plots ###
-hist(log10(MyDF$Predator.mass), # Predator histogram
-     xlab="log10(Body Mass (g))", ylab="Count", 
-     col = rgb(1, 0, 0, 0.5), # Note 'rgb', fourth value is transparency
-     main = "Predator-prey size Overlap") 
-hist(log10(MyDF$Prey.mass), col = rgb(0, 0, 1, 0.5), add = T) # Plot prey
-legend('topleft',c('Predators','Prey'),   # Add legend
-       fill=c(rgb(1, 0, 0, 0.5), rgb(0, 0, 1, 0.5))) # Define legend colors
+par(mfg=c(2,1))
+Pred_subplot2 <- hist(log10(MyDF$Predator.mass[MyDF$Type.of.feeding.interaction == "predacious/piscivorous"]), 
+     xlab= "log10(Predator Mass (g))", ylab = "Abundance",
+     main = "Distribution of Predacious/Piscivorous Predator Mass")
 
-### Boxplots ###
-boxplot(log10(MyDF$Predator.mass), xlab = "Location", ylab = "log10(Predator Mass)", main = "Predator mass")
-boxplot(log(MyDF$Predator.mass) ~ MyDF$Location, # the tilde (~) tell R to subdivide or categorize your analysis and plot by the “Factor” location
-        xlab = "Location", ylab = "Predator Mass",
-        main = "Predator mass by location")
-boxplot(log(MyDF$Predator.mass) ~ MyDF$Type.of.feeding.interaction,
-        xlab = "Location", ylab = "Predator Mass",
-        main = "Predator mass by feeding interaction type")
+par(mfg=c(3,1))
+Pred_subplot3 <- hist(log10(MyDF$Predator.mass[MyDF$Type.of.feeding.interaction == "piscivorous"]), 
+     xlab= "log10(Predator Mass (g))", ylab = "Abundance", 
+     main = "Distribution of Piscivorous Predator Mass")
 
-### Combining plot types ###
-par(fig=c(0,0.8,0,0.8)) # specify figure size as proportion
-plot(log(MyDF$Predator.mass),log(MyDF$Prey.mass), xlab = "Predator Mass (g)", ylab = "Prey Mass (g)") # Add labels
-par(fig=c(0,0.8,0.4,1), new=TRUE)
-boxplot(log(MyDF$Predator.mass), horizontal=TRUE, axes=FALSE)
-par(fig=c(0.55,1,0,0.8),new=TRUE)
-boxplot(log(MyDF$Prey.mass), axes=FALSE)
-mtext("Fancy Predator-prey scatterplot", side=3, outer=TRUE, line=-3)
+par(mfg=c(1,2))
+Pred_subplot4 <- hist(log10(MyDF$Predator.mass[MyDF$Type.of.feeding.interaction == "planktivorous"]), 
+     xlab= "log10(Predator Mass (g))", ylab = "Abundance",
+     main = "Distribution of Planktivorous Predator Mass")
+
+par(mfg=c(2,2))
+Pred_subplot5 <- hist(log10(MyDF$Predator.mass[MyDF$Type.of.feeding.interaction == "predacious"]), 
+     xlab= "log10(Predator Mass (g))", ylab = "Abundance", 
+     main = "Distribution of Predacious Predator Mass")
+
+dev.off();
 
 
-### Save graphics ###
-pdf("../results/Pred_Prey_Overlay.pdf", # Open blank pdf page using a relative path
-    11.7, 8.3) # These numbers are page dimensions in inches
-hist(log(MyDF$Predator.mass), # Plot predator histogram (note 'rgb')
-     xlab="Body Mass (g)", ylab="Count", col = rgb(1, 0, 0, 0.5), main = "Predator-Prey Size Overlap") 
-hist(log(MyDF$Prey.mass), # Plot prey weights
-     col = rgb(0, 0, 1, 0.5), 
-     add = T)  # Add to same plot = TRUE
-legend('topleft',c('Predators','Prey'), # Add legend
-       fill=c(rgb(1, 0, 0, 0.5), rgb(0, 0, 1, 0.5))) 
-dev.off()
+##### Subplots for Prey mass distribution by feeding interaction types #####
+pdf("../results/Prey_Subplots.pdf", 11.7, 8.3) 
+par(mfrow=c(3,2))
 
+par(mfg=c(1,1))
+Prey_subplot1 <- hist(log10(MyDF$Prey.mass[MyDF$Type.of.feeding.interaction == "insectivorous"]), 
+                      xlab= "log10(Prey Mass (g))", ylab = "Abundance", 
+                      main = "Distribution of Prey mass in Insectivorous Feeding")
 
-### qplot ###
-require(ggplot2)
-qplot(Prey.mass, Predator.mass, data = MyDF)
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF)
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF, colour = Type.of.feeding.interaction, asp = 1) # categorize with colour
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF, shape = Type.of.feeding.interaction, asp = 1) # categorize with shape
-qplot(log(Prey.mass), log(Predator.mass), 
-      data = MyDF, colour = "red")
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF, colour = I("red")) # real red
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF, size = 3) #with ggplot size mapping
-qplot(log(Prey.mass), log(Predator.mass),  data = MyDF, size = I(3)) #no mapping
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF, shape= I(3))
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF, colour = Type.of.feeding.interaction, alpha =I(.5))
+par(mfg=c(2,1))
+Prey_subplot2 <- hist(log10(MyDF$Prey.mass[MyDF$Type.of.feeding.interaction == "predacious/piscivorous"]), 
+                      xlab= "log10(Prey Mass (g))", ylab = "Abundance",
+                      main = "Distribution of Prey mass in Predacious/Piscivorous Feeding")
 
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF, geom = c("point", "smooth"))
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF, geom = c("point", "smooth")) + geom_smooth(method = "lm")
+par(mfg=c(3,1))
+Prey_subplot3 <- hist(log10(MyDF$Prey.mass[MyDF$Type.of.feeding.interaction == "piscivorous"]), 
+                      xlab= "log10(Prey Mass (g))", ylab = "Abundance", 
+                      main = "Distribution of Prey mass in Piscivorous Feeding")
 
-qplot(log(Prey.mass), log(Predator.mass), data = MyDF, geom = c("point", "smooth"),
-      colour = Type.of.feeding.interaction) + geom_smooth(method = "lm",fullrange = TRUE)
+par(mfg=c(1,2))
+Prey_subplot4 <- hist(log10(MyDF$Prey.mass[MyDF$Type.of.feeding.interaction == "planktivorous"]), 
+                      xlab= "log10(Prey Mass (g))", ylab = "Abundance",
+                      main = "Distribution of Prey mass in Planktivorous Feeding")
 
-p <- ggplot(MyDF, aes(x = log(Predator.mass),
-                      y = log(Prey.mass),
-                      colour = Type.of.feeding.interaction))
-q <- p + 
-  geom_point(size=I(2), shape=I(10)) +
-  theme_bw() + # make the background white
-  theme(aspect.ratio=1) # make the plot square
-q
+par(mfg=c(2,2))
+Prey_subplot5 <- hist(log10(MyDF$Prey.mass[MyDF$Type.of.feeding.interaction == "predacious"]), 
+                      xlab= "log10(Prey Mass (g))", ylab = "Abundance", 
+                      main = "Distribution of Prey mass in Predacious Feeding")
+
+dev.off();
+
+##### Subplots for predator-prey size-ratio distribution by feeding interaction types #####
+pdf("../results/SizeRatio_Subplots.pdf", 11.7, 8.3) 
+par(mfrow=c(3,2))
+
+par(mfg=c(1,1))
+Prey_subplot1 <- hist(log10(MyDF$Predator.Prey.Ratio[MyDF$Type.of.feeding.interaction == "insectivorous"]), 
+                      xlab= "Predator-prey size-ratio", ylab = "Abundance", 
+                      main = "Distribution of predator-prey size-ratio in Insectivorous Feeding")
+
+par(mfg=c(2,1))
+Prey_subplot2 <- hist(log10(MyDF$Predator.Prey.Ratio[MyDF$Type.of.feeding.interaction == "predacious/piscivorous"]), 
+                      xlab= "Predator-prey size-ratio", ylab = "Abundance",
+                      main = "Distribution of predator-prey size-ratio in Predacious/Piscivorous Feeding")
+
+par(mfg=c(3,1))
+Prey_subplot3 <- hist(log10(MyDF$Predator.Prey.Ratio[MyDF$Type.of.feeding.interaction == "piscivorous"]), 
+                      xlab= "Predator-prey size-ratio", ylab = "Abundance", 
+                      main = "Distribution of predator-prey size-ratio in Piscivorous Feeding")
+
+par(mfg=c(1,2))
+Prey_subplot4 <- hist(log10(MyDF$Predator.Prey.Ratio[MyDF$Type.of.feeding.interaction == "planktivorous"]), 
+                      xlab= "Predator-prey size-ratio", ylab = "Abundance",
+                      main = "Distribution of predator-prey size-ratio in Planktivorous Feeding")
+
+par(mfg=c(2,2))
+Prey_subplot5 <- hist(log10(MyDF$Predator.Prey.Ratio[MyDF$Type.of.feeding.interaction == "predacious"]), 
+                      xlab= "Predator-prey size-ratio", ylab = "Abundance", 
+                      main = "Distribution of predator-prey size-ratio in Predacious Feeding")
+
+dev.off();
 
 
 
-### Plotting a matrix ###
-require(reshape2)
-GenerateMatrix <- function(N){
-  M <- matrix(runif(N * N), N, N)
-  return(M)
-}
-M <- GenerateMatrix(10)
-Melt <- melt(M)
-p <- ggplot(Melt, aes(Var1, Var2, fill = value)) + geom_tile() + theme(aspect.ratio = 1)
-p
+###### create new dataframe to store new calculations #####
+mean_pred <- tapply(MyDF$Predator.mass, MyDF$Type.of.feeding.interaction, mean) # calculate mean predator mass by feeding type
+log_mean_pred <- c(log10(mean_pred)) # calculate log 10 of mean predator mass by feeding type, then save as vector
+
+mean_prey <- tapply(MyDF$Prey.mass, MyDF$Type.of.feeding.interaction, mean) # calculate mean prey mass by feeding type
+log_mean_prey <- c(log10(mean_prey)) # calculate log 10 of mean prey mass by feeding type, then save as vector
+
+median_pred <- tapply(MyDF$Predator.mass, MyDF$Type.of.feeding.interaction, median) # calculate median predator mass by feeding type
+log_median_pred <- c(log10(median_pred)) # calculate log 10 of median predator mass by feeding type, then save as vector
+
+median_prey <- tapply(MyDF$Prey.mass, MyDF$Type.of.feeding.interaction, median) # calculate median prey mass by feeding type
+log_median_prey <- c(log10(median_prey)) # calculate log 10 of median prey mass by feeding type, then save as vector
+
+mean_ratio <- c(tapply(MyDF$Predator.Prey.Ratio, MyDF$Type.of.feeding.interaction, mean)) # calculate mean predator-prey size ratio by feeding type
+median_ratio <- c(tapply(MyDF$Predator.Prey.Ratio, MyDF$Type.of.feeding.interaction, median)) # calculate median predator-prey size ratio by feeding type, then save as vector
+
+New_Results <- data.frame(log_mean_pred, log_mean_prey, log_median_pred, log_median_prey, mean_ratio, median_ratio) #create new dataframe
+names(New_Results) <- c("Mean.log10.Predator.Mass", "Mean.log10.Prey.Mass", "Median.log10.Predator.Mass", "Median.log10.Prey.Mass", "Mean.Predator.Prey.Size.Ratio", "Median.Predator.Prey.Size.Ratio")
+
+write.csv(New_Results, "../results/PP_results.csv") #store new dataframe output as csv
+
+
+
