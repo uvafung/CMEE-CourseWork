@@ -42,4 +42,8 @@ p <- p + scale_x_continuous("My x axis",
   scale_y_continuous("My y axis") + 
   theme_bw() + 
   theme(legend.position = "none") 
+
+
+pdf("../results/MyBars.pdf", 11.7, 8.3) 
 p
+dev.off()
