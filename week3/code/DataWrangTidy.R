@@ -25,7 +25,7 @@ view(MyWrangledData1) # check if blank has been replaced with 0
 
 
 MyWrangledData1 <- MyWrangledData1 %>%
-  dplyr::mutate_at(1:5, as.factor) # save columns 1:5 as factors
+  dplyr::mutate_at(1:4, as.factor) # save columns 1:4 as factors
 MyWrangledData1$"Count" <- as.integer(MyWrangledData1$"Count") # save Count as integer
 
 str(MyWrangledData1)
