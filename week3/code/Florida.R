@@ -3,7 +3,12 @@ load("../data/KeyWestAnnualMeantemperature.RData")
 ls()
 class(ats)
 head(ats)
-plot(ats)
+
+### Scatter plot of Temp ~ year with regression line ###
+plot(ats, xlab="Year", ylab ="Temperature in degree Celsius")
+title("(1)", adj = 0)
+abline(lm(Temp ~ Year, data = ats), col = "blue")
+
 
 Year <- as.factor(ats$Year)
 Temp <- as.factor(ats$Temp)
@@ -11,6 +16,7 @@ Temp <- as.factor(ats$Temp)
 cc <- cor(ats$Year, ats$Temp, method = "pearson") # calculate correlation between successive years and save as cc
 cc
 
+### Permutation analysis ###
 random <- rep(NA, 1000) #set as function
 
 for (i in 1:1000){
@@ -19,16 +25,35 @@ for (i in 1:1000){
 
 print(random)
 
-hist(random)
+hist(random) 
 
-p_value = length(random[random>cc])
-
+p_value = length(random[random>cc]) # number of random correlation coefficients with value greater than the observed one
 fraction = p_value/1000
 fraction
 
-hist(random, xlim=c(-1,1), 
-     main ="Distribution of random correlation coefficients",
+### Histogram for random correlation coefficients ###
+random_hist <- hist(random, xlim=c(-1,1), 
+     main ="",
      xlab="Correlation coefficients")
-abline(v = cc)
+abline(v = cc, col = "red")
+title("(2)", adj = 0)
+
+
+pdf("../results/fig.pdf", height=6, width=6)
+
+par(mfrow=c(2,1)) 
+
+plot(ats, xlab="Year", ylab ="Temperature in degree Celsius")
+title("(1a)", adj = 0)
+abline(lm(Temp ~ Year, data = ats), col = "blue")
+
+random_hist <- hist(random, xlim=c(-1,1), 
+                    main ="",
+                    xlab="Correlation coefficients")
+abline(v = cc, col = "red")
+title("(1b)", adj = 0)
+
+dev.off()
+
 
 
