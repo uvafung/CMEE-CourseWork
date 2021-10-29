@@ -78,6 +78,7 @@ def a_function():
     _a_global = 10
 
     def _a_function2():
+        """tesing global and local variables"""
         global _a_global
         _a_global = 20
     
@@ -98,6 +99,7 @@ print("The value of a_global in main workspace / namespace is ", _a_global)
 _a_global = 10
 
 def a_function():
+    """tesing global and local variables"""
 
     def a_function2():
         """tesing global and local variables"""
