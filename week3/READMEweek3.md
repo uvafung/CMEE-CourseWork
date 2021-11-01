@@ -1,6 +1,6 @@
-# CMEE CourseWork Week 2
+# CMEE CourseWork Week 3
 
-This repository contains codes and data for Computational Methods in Ecology and Evolution (CMEE) week 2 coursework.
+This repository contains codes and data for Computational Methods in Ecology and Evolution (CMEE) week 3 coursework.
 Instructions to run the codes can be found [here](https://mhasoba.github.io/TheMulQuaBio/intro.html).
 
 Data required to run the coding scripts can be downloaded from the following [repository](https://github.com/mhasoba/TheMulQuaBio).
@@ -24,9 +24,9 @@ A UNIX based Operating System is needed to run the projects. Linux and Mac OS ar
 ***********
 
 #### Project structure and usage:
-This project contains four folder: code, data, results, sandbox; and a README file.
+This project contains four folders: code, data, results, sandbox; and a README file.
 
-Code stores all the codes written for week 2 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
+Code stores all the codes written for week 3 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
 
 ###### Files in code:
 

@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1635334223 "/Users/Uva/Documents/CMEECourseWork/week3/code/Latex.tex" "/Users/Uva/Documents/CMEECourseWork/week3/code/Latex.pdf" "Latex" 1635334254
+["pdflatex"] 1635334223 "/Users/Uva/Documents/CMEECourseWork/week3/code/Latex.tex" "/Users/Uva/Documents/CMEECourseWork/week3/code/Latex.pdf" "Latex" 1635336803
   "../results//fig.pdf" 1635332992 5947 0d68004020e3b47c8059563f6ba3c2b9 ""
   "/Users/Uva/Documents/CMEECourseWork/week3/code/Latex.aux" 1635334224 32 3985256e7290058c681f74d7a3565a19 ""
   "/Users/Uva/Documents/CMEECourseWork/week3/code/Latex.tex" 1635334253 1061 5281b7b2e36ca497a0733d20998cf8a9 ""
@@ -29,8 +29,8 @@
   "Latex.aux" 1635334224 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "Latex.tex" 1635334253 1061 5281b7b2e36ca497a0733d20998cf8a9 ""
   (generated)
+  "Latex.pdf"
+  "Latex.log"
   "/Users/Uva/Documents/CMEECourseWork/week3/code/Latex.pdf"
   "Latex.aux"
-  "Latex.log"
   "/Users/Uva/Documents/CMEECourseWork/week3/code/Latex.log"
-  "Latex.pdf"

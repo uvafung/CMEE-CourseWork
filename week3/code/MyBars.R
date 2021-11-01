@@ -2,6 +2,10 @@ a <- read.table("../data/Results.txt", header = TRUE)
 head(a)
 a$ymin <- rep(0, dim(a)[1]) # append a column of zeros
 
+
+install.packages("ggplot2")
+require(ggplot2)
+
 # Print the first linerange
 p <- ggplot(a)
 p <- p + geom_linerange(data = a, aes(

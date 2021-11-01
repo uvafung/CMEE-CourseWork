@@ -7,7 +7,7 @@ require(mapdata)
 
 worldmap <- map_data("world") # gives a dataframe of points outlining the world
 
-connect_world <- ggplot() +   # creates a ggplot that 
+connect_world <- ggplot() +   # creates a ggplot that join up the points to form polygons 
   geom_polygon(data = worldmap, 
                aes(x = long, y = lat, group = group),
                fill = NA, colour = "black") +
