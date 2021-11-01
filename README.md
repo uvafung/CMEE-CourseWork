@@ -24,7 +24,7 @@ Week 1: For week 1 practicals -- including UNIX, shell scripts, LaTeX
 
 Week 2: For week 2 practicals -- Python I scripts
 
-Week 3: For week 3 practicals -- R
+Week 3: For week 3 practicals -- R and data visualization
 
 
 
