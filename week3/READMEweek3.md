@@ -60,6 +60,10 @@ Code stores all the codes written for week 3 practicals. Data stores all the dat
         PP_Regress.R: produce regression results for Predator mass vs Prey mass
         GPDD_Data.R: mapping the Global Population Dynamics Database (GPDD) on a world map
 
+    Latex scripts --
+        Florida_warming.tex: generating Latex document for Florida warming data
+
+
 
 ###### Files in data:
     trees.csv
