@@ -7,6 +7,8 @@ Data required to run the coding scripts can be downloaded from the following [re
 #### Languages:
 bash version 3.2.57(1)
 
+Please also refer to the README.md in each week's folder for specific languages applicable for that week
+
 *****************
 #### Dependencies:
 A UNIX based Operating System is needed to run the projects. Linux and Mac OS are both possible options.
