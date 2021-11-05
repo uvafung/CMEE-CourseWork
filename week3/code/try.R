@@ -1,5 +1,8 @@
-# catching errors in R with try()
-# Oct 21 2021
+# Author: Uva Fung
+# Date: Oct 21 2021
+# Description: catching errors in R with try()
+
+rm(list = ls())
 
 doit <- function(x){
     temp_x <- sample(x, replace = TRUE)   # take a random sample of elements from a dataset or a vector, with replacement
@@ -12,7 +15,7 @@ doit <- function(x){
 }
 
 
-set.seed(1345)
+set.seed(1345) # set the seed for random number generation
 popn <- rnorm(50)
 hist(popn)
 
@@ -26,3 +29,5 @@ for (i in 1:15){
 }
 
 result
+
+print("Script completes!")   # print when run with source() to show that script is working

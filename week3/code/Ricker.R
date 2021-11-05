@@ -1,5 +1,8 @@
-# Ricker model in R
-# Oct 21 2021
+# Author: Uva Fung
+# Date: Oct 21 2021
+# Description: Function modelling Ricker model in R
+
+rm=(list=ls())
 
 Ricker <- function(N0=1, r=1, K=10, generations=50)
 {
@@ -18,3 +21,5 @@ Ricker <- function(N0=1, r=1, K=10, generations=50)
 
 plot(Ricker(generations=10), type="l")
 
+
+print("Script completes!")   # print when run with source() to show that script is working

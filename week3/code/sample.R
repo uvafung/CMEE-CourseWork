@@ -1,5 +1,8 @@
-# testing lapply and sapply in R
+# Author: Uva Fung
 # Date: Oct 20 2021
+# Description: testing lapply and sapply in R
+
+rm=(list=ls())
 
 ####### Functions ########
 ## A function to take a sample of size n from a population "popn" and returns its mean
@@ -70,4 +73,4 @@ print(system.time(sapply_sample(popn, n, num)))
 print("Using the vectorized lappy function (on a list) took:")
 print(system.time(lappy_sample(popn, n, num)))
 
-
+print("Script completes!")

@@ -1,5 +1,8 @@
-# A boilerplate R script
+# Author: Uva Fung
 # Date: Oct 19 2021
+# Description: A boilerplate R script
+
+rm(list=ls())
 
 MyFunction <- function(Arg1, Arg2){
 
@@ -12,4 +15,6 @@ MyFunction <- function(Arg1, Arg2){
 
 MyFunction(1,2) # Test the function
 MyFunction("Riki", "Tiki") # A different test
+
+print("Script completes!")   # print when run with source() to show that script is working
 

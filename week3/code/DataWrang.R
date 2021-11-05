@@ -1,6 +1,9 @@
-################################################################
-################## Wrangling the Pound Hill Dataset ############
-################################################################
+# Author: Uva Fung
+# Date: Nov 5 2021
+# Description: Wrangling the Pound Hill Dataset 
+
+rm(list = ls())
+
 
 ############# Load the dataset ###############
 # header = false because the raw data don't have headers
@@ -14,8 +17,8 @@ MyMetaData <- read.csv("../data/PoundHillMetaData.csv", header = TRUE, sep = ";"
 head(MyData) # shows first few rows of MyData matrix
 dim(MyData) # shows dimesions of MyData matrix
 str(MyData) # gives list of items in the matrix
-fix(MyData) #you can also do this
-fix(MyMetaData) # open this in R data editor
+fix(MyData) # opens in RStudio Editor
+fix(MyMetaData) # opens in RStudio Editor
 
 ############# Transpose ###############
 # To get those species into columns and treatments into rows 
@@ -64,8 +67,7 @@ head(MyWrangledData)
 dim(MyWrangledData)
 
 ############# Exploring the data (extend the script below)  ###############
-install.packages("tidyverse")
-require(tidyverse)
-tibble::as_tibble(MyWrangledData)
-dplyr::glimpse(MyWrangledData)
-dplyr::filter(MyWrangledData, Count >100)
+
+
+print("Script completes!")   # print to show that script is working
+

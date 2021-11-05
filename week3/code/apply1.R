@@ -1,5 +1,8 @@
-# *apply in R -- in-built functions
+# Author: Uva Fung
 # Date: Oct 20 2021
+# Description: *apply in R -- in-built functions
+
+rm(list = ls())
 
 ## Build a random matrix
 M <- matrix(rnorm(100), 10, 10)
@@ -15,6 +18,8 @@ print(RowVars)
 ## Take mean of each column
 ColMeans <- apply(M, 2, mean)
 print(ColMeans)
+
+print("Script completes!")   # print when run with source() to show that script is working
 
 
 

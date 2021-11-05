@@ -1,5 +1,11 @@
+# Author: Uva Fung
+# Date: Nov 5 2021
+# Description: mapping the Global Population Dynamics Database (GPDD) on a world map
+
+rm(list=ls())
+
 load ("../data/GPDDFiltered.RData") # load data gpdd
-install.packages(c("ggplot2","maps", "mapdata", "rworldmap")) # install useful packages
+
 
 require(maps)
 require(ggplot2)
@@ -17,11 +23,14 @@ connect_world # print world map out
 
 dotted_world <- connect_world + 
   geom_point(data = gpdd, aes(x = long, y = lat), colour = "orange") # print world map with data points
-dotted_world 
+
+print(dotted_world)
+
+print("Script completes!")   # print to show that script is working
                         
 
 # An analysis based on this data may be biased because most data are collected from North America and Europe. 
-# Other geograohic regions with different climates and biodiversity (eg. the tropics) are excluded.
+# Other geographic regions with different climates and biodiversity (eg. the tropics) are excluded.
 
   
 

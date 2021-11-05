@@ -1,4 +1,9 @@
+# Author: Uva Fung
+# Date: Nov 5 2021
+# Description: calculate the correlation coefficients for Florida temperature data
+
 rm(list=ls())
+
 load("../data/KeyWestAnnualMeantemperature.RData")
 ls()
 class(ats)
@@ -39,7 +44,7 @@ abline(v = cc, col = "red")
 title("(2)", adj = 0)
 
 
-pdf("../results/fig.pdf", height=6, width=6)
+pdf("../results/Florida_warming_fig.pdf", height=6, width=6) 
 
 par(mfrow=c(2,1)) 
 
@@ -54,6 +59,8 @@ abline(v = cc, col = "red")
 title("(1b)", adj = 0)
 
 dev.off()
+
+print("Script completes!")   # print when run with source() to show that script is working
 
 
 

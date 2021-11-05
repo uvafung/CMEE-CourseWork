@@ -1,5 +1,8 @@
-# R conditionals script
+# Author: Uva Fung
 # Date: Oct 19 2021
+# Description: R conditionals script
+
+rm=(list=ls())
 
 # Check if integer is even
 is.even <- function(n=2){
@@ -41,3 +44,9 @@ is.prime <- function(n){
     }
 
 is.prime(3)
+
+# print when run with source() to show that script is working
+print(is.even(6))
+print(is.power2(4))
+print(is.prime(3))
+

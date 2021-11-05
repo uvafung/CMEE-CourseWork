@@ -1,9 +1,14 @@
+# Author: Uva Fung
+# Date: Nov 5 2021
+# Description: annotating bar chart
+
+rm(list = ls())
+
 a <- read.table("../data/Results.txt", header = TRUE)
 head(a)
 a$ymin <- rep(0, dim(a)[1]) # append a column of zeros
 
 
-install.packages("ggplot2")
 require(ggplot2)
 
 # Print the first linerange
@@ -49,5 +54,7 @@ p <- p + scale_x_continuous("My x axis",
 
 
 pdf("../results/MyBars.pdf", 11.7, 8.3) 
-p
+print(p)
 dev.off()
+
+print("Script completes!")   # print to show that script is working

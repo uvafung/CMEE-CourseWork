@@ -1,4 +1,6 @@
-# Runs the stochastic Ricker equation with gaussian fluctuations
+# Author: Uva Fung
+# Date: Oct 21 2021
+# Description: Runs the stochastic Ricker equation with gaussian fluctuations
 
 rm(list = ls())
 
@@ -55,4 +57,7 @@ print(system.time(res2 <- stochrick()))
 
 print("Vectorized Stochastic Ricker takes:")
 print(system.time(res2 <- stochrickvect()))
+
+print("Script completes!") 
+
 

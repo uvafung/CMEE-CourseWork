@@ -49,7 +49,7 @@ Code stores all the codes written for week 3 practicals. Data stores all the dat
         Ricker.R: Ricker model
         Vectorize2.R: stochastic Ricker model with quicker processing times
         browse.R: debugging with browser()
-        try.R: tesing try()
+        try.R: testing try()
         Florida_warming.R: calculate the correlation coefficients for Florida temperature data
         DataWrang.R: exploring data wrangling functions
         DataWrangTidy.R: data wrangling using tidyverse
@@ -60,8 +60,9 @@ Code stores all the codes written for week 3 practicals. Data stores all the dat
         PP_Regress.R: produce regression results for Predator mass vs Prey mass
         GPDD_Data.R: mapping the Global Population Dynamics Database (GPDD) on a world map
 
-    Latex scripts --
+    Latex script --
         Florida_warming.tex: generating Latex document for Florida warming data
+
 
 
 

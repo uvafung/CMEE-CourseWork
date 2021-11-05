@@ -1,5 +1,8 @@
-# control flow testing for R
+# Author: Uva Fung
 # Date: Oct 19 2021
+# Description: control flow testing for R
+
+rm=(list=ls())
 
 # if statements
 a <- TRUE
@@ -37,3 +40,7 @@ while (i < 10){
     i <- i + 1
     print(i^2)
 }
+
+
+print("Script complete!")   # this line is printed when this script is run using source()
+

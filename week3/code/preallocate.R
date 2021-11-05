@@ -1,5 +1,8 @@
+# Author: Uva Fung
 # Pre-allocation in R
 # Date: Oct 20 2021
+
+rm=(list=ls())
 
 NoPreallocFun <- function(x){
     a <- vector()       # empty vector
@@ -25,5 +28,8 @@ PreallocFun <- function(x){
 
 system.time(PreallocFun(10))
 
+# print when run with source() to show that script is working
+print(system.time(NoPreallocFun(10)))   
+print(system.time(PreallocFun(10)))
 
-
+print("Script completes!")

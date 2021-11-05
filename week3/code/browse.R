@@ -1,5 +1,8 @@
-# debugging using browser()
-# Oct 21 2021
+# Author: Uva Fung
+# Date: Oct 21 2021
+# Description: debugging using browser()
+
+rm(list = ls())
 
 Exponential <- function(N0 = 1, r = 1, generations = 10){
     # Runs a simulation of exponential growth
@@ -16,3 +19,6 @@ Exponential <- function(N0 = 1, r = 1, generations = 10){
 }
 
 plot(Exponential(), type="l", main="Exponential growth")
+
+print("Script completes!")   # print when run with source() to show that script is working
+

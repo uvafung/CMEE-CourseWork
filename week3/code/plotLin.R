@@ -1,3 +1,10 @@
+# Author: Uva Fung
+# Date: Nov 5 2021
+# Description: annotating a linear regression plot
+
+rm(list = ls())
+require(ggplot2)
+
 x <- seq(0, 100, by = 0.1)
 y <- -4. + 0.25 * x +
   rnorm(length(x), mean = 0., sd = 2.5)
@@ -30,5 +37,7 @@ p <- p + geom_text(aes(x = 60, y = 0,
                    colour = "blue")
 
 pdf("../results/MyLinReg.pdf", 11.7, 8.3) 
-p
+print(p)
 dev.off()
+
+print("Script completes!")   # print to show that script is working

@@ -1,3 +1,12 @@
+# Author: Uva Fung
+# Date: Nov 5 2021
+# Description: plotting the Girko’s law simulation
+
+rm(list = ls())
+
+
+require(ggplot2)
+
 build_ellipse <- function(hradius, vradius){ # function that returns an ellipse
   npoints = 250
   a <- seq(0, 2 * pi, length = npoints + 1)
@@ -12,7 +21,7 @@ M <- matrix(rnorm(N * N), N, N) # Build the matrix
 eigvals <- eigen(M)$values # Find the eigenvalues
 
 eigDF <- data.frame("Real" = Re(eigvals), "Imaginary" = Im(eigvals)) # Build a dataframe
-s
+
 my_radius <- sqrt(N) # The radius of the circle is sqrt(N)
 
 ellDF <- build_ellipse(my_radius, my_radius) # Dataframe to plot the ellipse
@@ -35,9 +44,10 @@ p
 
 
 pdf("../results/Girko.pdf", 11.7, 8.3) 
-p
+print(p)
 dev.off()
 
 
 
+print("Script completes!")   # print when run with source() to show that script is working
 

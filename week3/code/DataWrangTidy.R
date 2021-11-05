@@ -1,8 +1,14 @@
-################## Wrangling the Pound Hill Dataset ############
+# Author: Uva Fung
+# Date: Nov 5 2021
+# Description: Wrangling the Pound Hill Dataset 
+
+rm(list = ls())
+
+
 MyData1 <- as.matrix(read.csv("../data/PoundHillData.csv", header = FALSE)) # treat MyData1 as matrix
 MyMetaData1 <- read.csv("../data/PoundHillMetaData.csv", header = TRUE, sep = ";")
 
-install.packages("tidyverse") #install packages
+
 require(tidyverse)
 
 MyData1 <- tibble::as_tibble(data.frame(t(MyData1), stringsAsFactors = F)) # convert into tibble and transpose it
@@ -33,3 +39,4 @@ glimpse(MyWrangledData1)
 view(MyWrangledData1)
 dim(MyWrangledData1)
 
+print("Script completes!")   # print to show that script is working
