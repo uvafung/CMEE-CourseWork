@@ -7,6 +7,7 @@ week1/sandbox/
 week1/code/*.log
 week1/code/.txt
 week3/sandbox/
+week7/sandbox/
 
 #Keep gitkeep
 !week1/results/.gitkeep
@@ -15,5 +16,7 @@ week3/sandbox/
 !week2/sandbox/.gitkeep
 !week3/results/.gitkeep
 !week3/sandbox/.gitkeep
+!week7/results/.gitkeep
+!week7/results/.gitkeep
 
 
