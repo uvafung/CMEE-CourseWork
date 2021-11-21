@@ -4,7 +4,7 @@
 # Desc: profiling code to speed up computational process
 # Date: Nov 16 2021
 
-"""This script profile codes to speed up compputational process"""
+"""This script profile codes to speed up computational process"""
 
 def my_squares(iters):
     """give a list of squared values"""
@@ -21,7 +21,7 @@ def my_join(iters, string):
     return out
 
 def run_my_funcs(x,y):
-    """print the input values and produce outputs for functions my_square and my_join"""
+    """print the input values and outputs for functions my_square and my_join"""
     print(x,y)
     my_squares(x)
     my_join(x,y)

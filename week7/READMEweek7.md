@@ -10,6 +10,9 @@ Data required to run the coding scripts can be downloaded from the following [re
 #### Languages:
 Python 3.9.7
 
+#### Interactive interface:
+Jupyter Notebook, Python kernel and R kernel
+
 ***********
 #### Dependencies:
 A UNIX based Operating System is needed to run the projects. Linux and Mac OS are both possible options. Linux Ubuntu can be downloaded [here](https://ubuntu.com/)
@@ -18,7 +21,9 @@ A UNIX based Operating System is needed to run the projects. Linux and Mac OS ar
 ******************
 #### Installation:
 
-###### Install Python 3.9.7 can be installed [here](https://www.python.org/downloads/release/python-397/)
+###### Python 3.9.7 can be installed [here](https://www.python.org/downloads/release/python-397/)
+
+###### Jupyter Notebook interface, Python and R kernels can be installed following the instructions [here](https://jupyter.readthedocs.io/en/latest/install.html)
 
 ***********
 
@@ -36,12 +41,12 @@ Code stores all the codes written for week 7 practicals. Data stores all the dat
         profileme2.py: faster code profiling
         TestR.py: test the process of running R scripts from Python
         timeitme.py: compares the speed of loops, list comprehensions and join methods for strings
-    
+
     R script --
         TestR.R: run by TestR.py to test running R scripts from Python
 
     Jupyter notebook --
-        MyFirstJupyterNb.ipynb: practicing with Jupyter Notebook
+        MyFirstJupyterNb.ipynb: running Python and R commands with Jupyter Notebook
 
 
 

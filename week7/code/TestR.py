@@ -7,6 +7,6 @@
 """Test the process of running R scripts from Python"""
 
 import subprocess
-subprocess.Popen("Rscript --verbose TestR.R > ../results/TestR.Rout 2> ../results/TestR_errFile.Rout", shell=True).wait() 
+subprocess.Popen("Rscript --verbose TestR.R > ../results/TestR.Rout 2> ../results/TestR_errorFile.Rout", shell=True).wait() 
 # error output being redirected to a new file
 

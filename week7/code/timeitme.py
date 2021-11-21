@@ -30,7 +30,7 @@ from profileme2 import my_join as my_join
 
 
 
-### Another possible approach to time the function
+### A possible approach to time the function
 import time
 start = time.time()
 my_squares_loops(iters)
