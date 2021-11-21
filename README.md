@@ -28,7 +28,7 @@ Week 2: For week 2 practicals -- Python I scripts
 
 Week 3: For week 3 practicals -- R and data visualization
 
-
+Week 7: For week 7 practicals -- Python II 
 
 ************************************
 #### Author name and contact:
