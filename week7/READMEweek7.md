@@ -25,7 +25,7 @@ A UNIX based Operating System is needed to run the projects. Linux and Mac OS ar
 #### Project structure and usage:
 This project contains four folders: code, data, results, sandbox; and a README file.
 
-Code stores all the codes written for week 3 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
+Code stores all the codes written for week 7 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
 
 ###### Files in code:
 
