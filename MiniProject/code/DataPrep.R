@@ -40,6 +40,11 @@ data <- left_join(data, Datapoint_counts) # add column into data
 
 data <- data %>% filter(No_datapoints > 10)  # only keep datasets with more than 10 measurements
 
+data <- data %>%
+  mutate(ID_no_Rep_dup = ID_no_Rep)
+
+View(data)
+
 
 write.csv(data, "../data/ModifiedLogisticGrowthData.csv")
 

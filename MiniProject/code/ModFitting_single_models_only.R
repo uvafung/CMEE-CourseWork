@@ -52,50 +52,8 @@ r_est <- r_val # estimate from OLS fitting
 Logistic_ID95 <- nlsLM(LogPopBio ~ logistic(t = Time, r, K, N0), data = Subset_ID95, list(r = r_est, K = K_max, N0 = N0_min), trace = T)
 summary(Logistic_ID95) # nls logistics output summary
 
-AIC()
-
-
-############# Logistic model - Loop through multiple datasets ##### 
-data_subset <- data %>% group_by(ID_no_Rep)
-
-
-Tidy_logistic <- function(data, ...) {
-  
-  lm_data <- lm(LogPopBio ~ Time, data = data) # fit lm with log scale
-  r_val <- coef(summary(lm_data))["Time","Estimate"]
-  
-  nlsLM(LogPopBio ~ logistic(t = Time, r, K, N0), data = data,
-        list(K = max(data_subset$LogPopBio),
-             N0 = data_subset$LogPopBio[which.min(data_subset$Time_series)], # find the log population size when the time point is the smallest
-             r = r_val), control = list(maxiter = 500)) %>% 
-    tidy() %>% # constructs tibble that stores coefficient and p-value outputs
-    pivot_wider(names_from = "term", values_from = c(estimate, std.error, statistic, p.value))
-}
-
-Glance_logistic <- function(data, ...) {
-  
-  lm_data <- lm(LogPopBio ~ Time, data = data) # fit lm with log scale
-  r_val <- coef(summary(lm_data))["Time","Estimate"]
-  
-  nlsLM(LogPopBio ~ logistic(t = Time, r, K, N0), data = data,
-        list(K = max(data_subset$LogPopBio),
-             N0 = data_subset$LogPopBio[which.min(data_subset$Time_series)],
-             r = r_val), control = list(maxiter = 500)) %>% 
-    glance() # constructs tibble that stores AIC and BIC outputs
-}
-
-
-
-
-Tidy_logistic_output <- data_subset %>% group_modify(~ Tidy_logistic (data = .))
-
-Glance_logistic_output <- data_subset %>% group_modify(~ Glance_logistic (data = .))
-
-
-
-
-
-
+AIC(Logistic_ID95)
+BIC(Logistic_ID95)
 
 
 ########### 5 -- Gompertz model #############

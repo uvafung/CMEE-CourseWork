@@ -11,8 +11,6 @@ require(tidyverse)
 require(broom)
 
 data = read.csv("../data/ModifiedLogisticGrowthData.csv")
-
-Subset_ID95 <- subset(data, ID_no_Rep == "95_1", select=X:No_datapoints) # Subset data with ID 95
 data_subset <- data %>% group_by(ID_no_Rep) # subset data 
 
 
@@ -164,19 +162,45 @@ gompertz <- function(t, r, K, N0, t_lag){     # Modified gompertz growth model (
 } 
 
 
+first_half_time_series <- filter(data_subset, Time_series < 1/2 * max(Time_series))
+t_lag_first_half<- first_half_time_series$Time[which.max(diff(diff(first_half_time_series$LogPopBio)))]
+
 Tidy_gompertz <- function(data, ...) {
   
-  lm_data <- lm(LogPopBio ~ Time, data = data) # fit lm with log scale
-  r_val <- coef(summary(lm_data))["Time","Estimate"] # save r2 estimate as r_val
-  
-  nlsLM(LogPopBio ~ gompertz(t = Time, r, K, N0, t_lag), data = data,
-        list(K = max(data_subset$LogPopBio),
-             N0 = data_subset$LogPopBio[which.min(data_subset$Time_series)], # find the log population size when the time point is the smallest
-             r = r_val,
-             t_lag = data_subset$Time[which.max(diff(diff(data_subset$LogPopBio)))]), control = list(maxiter = 500)) %>% 
-    tidy() %>% # constructs tibble that stores coefficient and p-value outputs
-    pivot_wider(names_from = "term", values_from = c(estimate, std.error, statistic, p.value))
+  out <- tryCatch(
+    expr = {
+      lm_data <- lm(LogPopBio ~ Time, data = data) # fit lm with log scale
+      r_val <- coef(summary(lm_data))["Time","Estimate"] # save r2 estimate as r_val
+      
+      first_half_time_series <- filter(data_subset, Time_series < 1/2 * max(Time_series))
+      t_lag_first_half<- first_half_time_series$Time[which.max(diff(diff(first_half_time_series$LogPopBio)))]
+      
+      nlsLM(LogPopBio ~ gompertz(t = Time, r, K, N0, t_lag), data = data,
+            list(K = max(data_subset$LogPopBio),
+                 N0 = data_subset$LogPopBio[which.min(data_subset$Time_series)], # find the log population size when the time point is the smallest
+                 r = r_val,
+                 t_lag = t_lag_first_half), control = list(maxiter = 500)) %>% 
+        tidy() %>% # constructs tibble that stores coefficient and p-value outputs
+        pivot_wider(names_from = "term", values_from = c(estimate, std.error, statistic, p.value))
+    },
+    error = function(e){ 
+      print("error")
+      print(data$ID_no_Rep[1])
+      print(e)
+    },
+    warning = function(w){
+      print("warning")
+      print(data$ID_no_Rep[1])
+      print(w)
+    },
+    finally = function(f){
+      print("TryCatch done")
+      print(data$ID_no_Rep[1])
+      print(f)
+    }
+  )
 }
+
 
 
 Glance_gompertz <- function(data, ...) {
@@ -188,7 +212,7 @@ Glance_gompertz <- function(data, ...) {
         list(K = max(data_subset$LogPopBio),
              N0 = data_subset$LogPopBio[which.min(data_subset$Time_series)],
              r = r_val,
-             t_lag = data_subset$Time[which.max(diff(diff(data_subset$LogPopBio)))]), control = list(maxiter = 500), trace = T) %>% 
+             t_lag = t_lag_first_half), control = list(maxiter = 500), trace = T) %>% 
     glance() # constructs tibble that stores AIC and BIC outputs
 }
 
@@ -277,24 +301,45 @@ BIC(Baranyi_ID95)
 
 
 ############### Plotting the graph ###################
-timepoints <- seq(min(Subset_ID95$Time), max(Subset_ID95$Time), 0.5) 
+logistic <- function(t, r, K, N0){                      # logistic model in log scale
+  return((N0 * K * exp(r * t))/(K+N0 * (exp(r * t)-1)))
+}
 
-logistic_points <- logistic(t = timepoints,  # time points for logistic equation
-                            r = coef(Logistic_ID95)["r"], 
-                            K = coef(Logistic_ID95)["K"], 
-                            N = coef(Logistic_ID95)["N0"])
+gompertz <- function(t, r, K, N0, t_lag){     # Modified gompertz growth model (Zwietering 1990)
+  return(N0 + (K - N0) * exp(-exp(r * exp(1) * (t_lag - t)/((K - N0) * log(10)) + 1)))
+} 
 
-gompertz_points <- gompertz(t = timepoints,  # time points for gompertz equation
-                            r = coef(Gompertz_ID95)["r"], 
-                            K = coef(Gompertz_ID95)["K"], 
-                            N = coef(Gompertz_ID95)["N0"], 
-                            t_lag = coef(Gompertz_ID95)["t_lag"])
 
-baranyi_points <- baranyi(t = timepoints,  # time points for gompertz equation
-                            r = coef(Baranyi_ID95)["r"], 
-                            K = coef(Baranyi_ID95)["K"], 
-                            N = coef(Baranyi_ID95)["N0"], 
-                            t_lag = coef(Baranyi_ID95)["t_lag"])
+baranyi <- function(t=Time, r, K, N0, t_lag) {N0 + r * (t + (1/r) * log(exp(-r*t) + 
+                                                                          exp(-r * t_lag) - exp(-r * (t + t_lag)))) - 
+    log(1 + ((exp(r * (t + (1/r) * log(exp(-r*t) +
+                                         exp(-r * t_lag) - exp(-r * 
+                                                                 (t + t_lag)))))-1)/(exp(K-N0))))}
+
+
+Plotting <- function(data, ...) {
+  OlS_datasubset <- lm(LogPopBio ~ Time, data = data)
+  Qua_datasubset <- lm(LogPopBio ~ Time + I(Time^2) , data = data)
+  Cub_data <- lm(LogPopBio ~ Time + I(Time^2) + I(Time^3), data = data)
+  
+  timepoints <- seq(min(data_subset$Time), max(data_subset$Time), 0.5) 
+  
+  logistic_points <- logistic(t = timepoints,
+                              r = coef(data_subset)["r"],
+                              K = coef(data_subset)["K"],
+                              N = coef(data_subset)["N0"])
+  
+  gompertz_points <- gompertz(t = timepoints,
+                              r = coef(data_subset)["r"], 
+                              K = coef(data_subset)["K"], 
+                              N = coef(data_subset)["N0"], 
+                              t_lag = coef(data_subset)["t_lag"])
+  
+  baranyi_points <- baranyi(t = timepoints, 
+                            r = coef(data_subset)["r"], 
+                            K = coef(data_subset)["K"], 
+                            N = coef(data_subset)["N0"], 
+                            t_lag = coef(data_subset)["t_lag"])
 
 df1 <- data.frame(timepoints, logistic_points)
 df1$model <- "Logistic model"
@@ -311,7 +356,7 @@ names(df3) <- c("Time", "LogPopBio", "model")
 model_frame <- rbind(df1, df2, df3)
 
 
-combineplot <- ggplot(Subset_ID95, aes(x = Time, y = LogPopBio)) +
+combineplot <- ggplot(data_subset, aes(x = Time, y = LogPopBio)) +
   geom_point(size = 2.5) +
   geom_smooth(method = "lm", col = "red", se = F) + # line for OLS
   geom_smooth (method= "lm", col = "orange", formula = y ~ x + I(x^2) + I(x^3), se=F) +  # line for cubic equation
@@ -322,3 +367,8 @@ combineplot <- ggplot(Subset_ID95, aes(x = Time, y = LogPopBio)) +
   labs(x = "Time", y = "log(Population Size)")
 
 print(combineplot)
+
+}
+
+
+Plotting_output <- data_subset %>% group_modify(~ Plotting (data = .))
