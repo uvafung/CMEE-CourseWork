@@ -10,15 +10,15 @@ require("tidyverse")
 data = read.csv("../data/LogisticGrowthData.csv") # import raw data into script
 
 
-##### Data wrangling ####
+##### Data wrangling #### KEEP
 data <- data %>% 
   relocate(Citation, .before = Rep) %>%  # move Citation column before Rep 
   relocate(Temp, .before = Citation) %>% # move Temp column before Citation
   unite(ID, Species:Citation, sep = "_", remove = FALSE, na.rm = FALSE) %>% # unite Species, Medium and Citation columns and save the output in a new ID column
   transform(ID_no = as.numeric(factor(ID))) %>% # convert ID into unique ID numbers and save in a new column ID_no
-  filter(Time > 0) %>%  # Only keep data with time > 0
-  filter(PopBio > 0) %>%
-  mutate(LogPopBio = log(PopBio), .after = "PopBio") %>%
+  filter(Time > 0) %>%            # Only keep data with time > 0
+  filter(PopBio > 0) %>%          # Only keep data with Population Size > 0
+  mutate(LogPopBio = log(PopBio), .after = "PopBio") %>% # make new column storing Log Population Size 
   relocate(ID_no, .before = Rep) %>%
   unite(ID_no_Rep, ID_no:Rep, sep = "_", remove = FALSE, na.rm = FALSE) %>% # make a new column storing unique ID and no. of repeats
   transform(ID_no_Rep = as.character(factor(ID_no_Rep))) 
@@ -38,12 +38,9 @@ Datapoint_counts <- data %>%
 
 data <- left_join(data, Datapoint_counts) # add column into data
 
-data <- data %>% filter(No_datapoints > 10)  # only keep datasets with more than 10 measurements
-
-data <- data %>%
-  mutate(ID_no_Rep_dup = ID_no_Rep)
-
-View(data)
+data <- data %>% 
+  filter(No_datapoints > 5) %>% # only keep data subsets with more than 5 measurements
+  mutate(ID_no_Rep_dup = ID_no_Rep) # make a duplicate column for group_by function in model fitting
 
 
 write.csv(data, "../data/ModifiedLogisticGrowthData.csv")

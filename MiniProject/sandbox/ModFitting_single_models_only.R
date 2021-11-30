@@ -11,7 +11,7 @@ require(tidyverse)
 require(broom)
 
 data = read.csv("../data/ModifiedLogisticGrowthData.csv") # import modified data into script
-Subset_ID95 <- subset(data, ID_no_Rep == "24_1", select=X:ID_no) # Subset data with ID 95
+Subset_ID95 <- subset(data, ID_no_Rep_dup == "95_1", select=X:ID_no_Rep_dup) # Subset data with ID 95
 
 
 ########### 1 -- OLS Model #############
@@ -86,8 +86,7 @@ baranyi <- function(t=Time, r, K, N0, t_lag) {N0 + r * (t + (1/r) * log(exp(-r*t
                                                                            (t + t_lag)))))-1)/(exp(K-N0))))}
 
 
-
-N0_bstart <- min(Subset_ID95$LogPopBio) # lowest population size
+N0_bstart <- min(Subset_ID95$PopBio) # lowest population size
 K_bstart <- max(Subset_ID95$PopBio) # highest population size
 r_bstart <- r_val # needs maximum specific growth rate
 t_lag_bstart <- Subset_ID95$Time[which.max(diff(diff(Subset_ID95$LogPopBio)))] # find last timepoint of lag phase
@@ -95,7 +94,7 @@ t_lag_bstart <- Subset_ID95$Time[which.max(diff(diff(Subset_ID95$LogPopBio)))] #
 
 Baranyi_ID95 <- nlsLM(LogPopBio ~ baranyi(t = Time, r, K, N0, t_lag), data = Subset_ID95,
                       list(t_lag = t_lag_bstart, r = r_bstart, N0 = N0_bstart, K = K_bstart), 
-                      control = list(maxiter = 500), trace = T) # increase max no of iterations
+                      control = list(maxiter = 1000), trace = T) # increase max no of iterations
 summary(Baranyi_ID95)
 
 AIC(Baranyi_ID95)
