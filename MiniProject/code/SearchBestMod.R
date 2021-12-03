@@ -1,6 +1,6 @@
 # Author: Uva Fung u.fung21@imperial.ac.uk
 # Date: Nov 29, 2021
-# File name: BestModAIC.R
+# File name: SearchBestMod.R
 # Description: This script imports modified data to determine the best fitting model based on AIC
 
 rm(list=ls())

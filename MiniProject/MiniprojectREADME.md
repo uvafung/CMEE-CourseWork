@@ -51,7 +51,7 @@ Code stores all the codes written for the MiniProject. Data stores all the data 
 
 ###### Files in code:
 
-    R scripts --
+    R scripts (listed in the order of running) --
         DataPrep.R: Data wrangling to filter good quality datasets for analysis.
         ModFitting: Model fitting and returns analysis output csv files to be stored in data.
         ModAssumpCheck.R: Check that the assumptions of model fitting are met.
@@ -62,7 +62,8 @@ Code stores all the codes written for the MiniProject. Data stores all the data 
         Report.tex: contains the report written in latex
         
     bash script --
-        RunAnalysis.sh: run all the R scripts for analysis and compiles the final report from latex to pdf
+        CompileLatex.sh: compile the report in pdf format from latex
+        RunAnalysis.sh: run all the R scripts for analysis and the CompileLatex.sh to produce the final report
     
     bibTex file:
     Report.bib: stores the bibliography used in the report
@@ -73,6 +74,9 @@ Code stores all the codes written for the MiniProject. Data stores all the data 
     LogisticGrowthData.csv: contains all the datasets
     LogisticGrowthMetaData.csv: description for each column of the datasets
 
+
+###### Troubleshoot!!!
+    If you encounter a prompt in the terminal while compiling the latex report, type in quit() then enter. The sysytem will require you to repeat this step for three times. Afterwards the report in pdf format should be generated in the code directory.
 
 *****************
 #### Author name and contact:

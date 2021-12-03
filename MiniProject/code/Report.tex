@@ -1,13 +1,14 @@
 \documentclass[11pt]{article}
+\linespread{1.5} 
 
 \usepackage{graphicx}
 \graphicspath{{../results/}}
 
 
+
 %% Useful packages
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
-\bibliographystyle{unsrt}
 \usepackage{tabularx}
 \usepackage{kantlipsum}
 \usepackage{booktabs}
@@ -15,23 +16,25 @@
 \useunder{\uline}{\ul}{}
 \usepackage{amsmath}
 \usepackage{lineno}
-\usepackage{biblatex} 
-\addbibresource{Report.bib}
-\usepackage[round]{natbib}
+\usepackage{cite}
 
 \graphicspath{{../results/}}
 
 \linenumbers
 
 
+\title{Non-linear models outperform linear models in predicting bacterial growth}
+
+\author{Uva Fung - Imperial College London}
+
+\date{Word count: 3131}
 
 \begin{document}
 
-\title{Non-linear models outperform linear models in predicting bacterial growth}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
 
-\author{Uva Fung}
-
-\date{Word count: 3131}
 
 
 \begin{abstract}
@@ -40,7 +43,7 @@ Predicting bacterial growth is important in the food industry as the information
 
 
 \section{Introduction}
-The study of bacterial growth is important in food microbiology as it provides important information in determining shelf life and food safety \citep{zwietering_modeling_1990}. The growth of bacteria over time can be separated into four phases: lag phase, exponential growth phase, stationary phase and dead phase \cite{wang_bacterial_2015}, which can be modelled using different phenomenological and mechanistic approaches \cite{johnson_model_2004, peleg_microbial_2011}. Some simple phenomenological models only include time as the explanatory variable in predicting population growth. These models can be fitted quickly within a short period of time but with limited fitting accuracy. Other more complex ones, such as the Gompertz model, incorporates specific growth rate to improve goodness of fit. However, all phenomenological models only describe the pattern of bacterial growth and do not provide explanations on what causes the observed pattern \cite{peleg_microbial_2011}. Mechanistic models take into account additional biological parameters, such as growth rate, length of lag phase, initial and final population sizes, providing biological explanations on the observed patterns \cite{zwietering_modeling_1990}.The starting values for parameters can be further searched for and adjusted during model fitting to obtain the optimal model. Some of the most popular mechanistic models include the Logistic model \cite{zwietering_modeling_1990} and the Baranyi model \cite{baranyi_dynamic_1994}. These models generally provide a better fit, but take a longer processing time and might not converge well depending on the starting parameters. The use of different models could have drastic differences in the predicted bacterial growth. This in turn could have a huge effect on the food industry, as models that predict bacterial growth poorly could cause wrong estimations of shelf life, leading to food wastage or hygiene and public health issues. 
+The study of bacterial growth is important in food microbiology as it provides important information in determining shelf life and food safety \cite{zwietering_modeling_1990}. The growth of bacteria over time can be separated into four phases: lag phase, exponential growth phase, stationary phase and dead phase \cite{wang_bacterial_2015}, which can be modelled using different phenomenological and mechanistic approaches \cite{johnson_model_2004, peleg_microbial_2011}. Some simple phenomenological models only include time as the explanatory variable in predicting population growth. These models can be fitted quickly within a short period of time but with limited fitting accuracy. Other more complex ones, such as the Gompertz model, incorporates specific growth rate to improve goodness of fit. However, all phenomenological models only describe the pattern of bacterial growth and do not provide explanations on what causes the observed pattern \cite{peleg_microbial_2011}. Mechanistic models take into account additional biological parameters, such as growth rate, length of lag phase, initial and final population sizes, providing biological explanations on the observed patterns \cite{zwietering_modeling_1990}.The starting values for parameters can be further searched for and adjusted during model fitting to obtain the optimal model. Some of the most popular mechanistic models include the Logistic model \cite{zwietering_modeling_1990} and the Baranyi model \cite{baranyi_dynamic_1994}. These models generally provide a better fit, but take a longer processing time and might not converge well depending on the starting parameters. The use of different models could have drastic differences in the predicted bacterial growth. This in turn could have a huge effect on the food industry, as models that predict bacterial growth poorly could cause wrong estimations of shelf life, leading to food wastage or hygiene and public health issues. 
 \vspace{\baselineskip}
 
 This study aims to identify the best model to be used in predicting bacterial growth across large empirical datasets. I will answer four questions: i) Which model has the highest number of successfully converged datasets? ii) Which model has the highest number of best fit across all datasets? ii) What is the time needed to fit each model? iv) Does the search for multiple starting parameter values increase the number of successful fitting in Gompertz and Baranyi models? I hypothesized phenomenological models to spend a much shorter fitting time than mechanistic models because the latter has multiple biological parameters. I also expect the search for starting parameter values should increase the number of successful model fits in both Gompertz and Baranyi models, as this should increase the likelihood of sampling a starting parameter close enough for convergence. The best model will be determined based on the number of datasets successfully converged, the number of datasets that are best fitted by the model, and the time needed to complete the model fitting process.
@@ -65,31 +68,31 @@ For each dataset, I fitted six models: four phenomenological models (Ordinary Le
 
 
 \begin{equation} 
-  OLS: log \(N_{t}\) = \(m\)\(t\) + \(c\) 
+  OLS: log N_{t} = mt + c 
 \end{equation}
 
 \begin{equation}
-  Quadratic: log \(N_{t}\) = \(a\) + \(b\)\(t\) + \(c\)\(t^{2}\) 
+  Quadratic: log N_{t} = a + bt + ct^{2} 
 \end{equation}
 
 \begin{equation}
-  Cubic: log \(N_{t}\) = \(a\) + \(b\)\(t\) + \(c\)\(t^{2}\) + \(d\)\(t^{3}\) 
+  Cubic: log N_{t} = a + bt + ct^{2} + dt^{3} 
 \end{equation}
 
 \begin{equation}
-  Logistic: \(N_{t}\) = \frac{\(N_{0}\)K_{e}^{rt}}{K + N0(e^{rt}-1)} 
+  Logistic: N_{t} = \frac{N_{0}Ke^{rt}} {K + N_{0}(e^{rt}-1)} 
 \end{equation}
 
 \begin{equation} 
-  Gompertz: log\(N_{t}\) = log(\(N_{0}\)) + (log(K) - log(\(N_{0}\))e^{-e*(r*e(1)*\frac{t_{lag} - t}{log(K) - log(\(N_{0}\))*log{10}}}+1 
+  Gompertz: logN_{t} = N_{0} + (K - N_{0})e^{-e^{re^{1}}} \frac{t_{lag} - t}{(K - N_{0})log{10}}+1 
 \end{equation}
 
 \begin{equation} 
-  Baranyi: log(N_{t}) = N_{0}+r*A*N_{t}*t -ln(1 + \frac{e^{r*N_{0}*t}-1}{e^{(K - N_{0})}} 
+  Baranyi: log(N_{t}) = N_{0}+rA(t) -ln(1 + \frac{e^{rA(t)}-1}{e^{(K - N_{0})}}) 
 \end{equation}
 
 \begin{equation} 
-  Baranyi: N_{t} = t - \frac{1}{r}*ln*(e^{-r*t}+e^{-r*t_{lag}}- e^{-r(t+t_{lag})}) 
+  Baranyi: A(t) = t + \frac{1}{r}ln(e^{-rt}+e^{-rt_{lag}}- e^{-r(t+t_{lag})}) 
 \end{equation}
 
 
@@ -136,7 +139,9 @@ Baranyi msp  & 80                      & 8                   & 196 &  \\ \bottom
 Among the eight models fitted, Gompertz msp model is best fitted to the greatest number of datasets based on lowest AIC scores (78) followed by the Baranyi model (71) (Table 2). The OLS model has the fewest number of best-fitting datasets. Only 2.4\% of the total dataset returned the OLS model as the one with the lowest AIC. The use of multiple starting parameter values increases the number of datasets best fitted in the Gompertz msp model, but not in the Baranyi msp model (Table 2).
 \vspace{\baselineskip}
 
-Once the significance in AIC scores is taken into account, I found that out of the total 284 datasets, 135 datasets were equally best fitted by more than one model (two or more models with an AIC score difference <2) (Table 2; Fig. 1, Fig. 2). The remaining 149 datasets are significantly best fitted by a single model (Table 2; Fig. 3). Baranyi has the highest number of significantly best fitted datasets. When incorporating the number of successfully converged models, I found that the majority of the datasets successfully fitted by the Baranyi model return the Baranyi model as the one with the lowest AIC that fits significantly better than other models (Table 4). In contrast, only 5-8\% of the datasets successfully fitted by the Logistic, Gompertz, Gompertz msp or Baranyi msp models returned these four models as the ones with significant best fit.
+Once the significance in AIC scores is taken into account, I found that out of the total 284 datasets, 135 datasets were equally best fitted by more than one model (two or more models with an AIC score difference smaller than 2) (Table 2; Fig. 1, Fig. 2). The remaining 149 datasets are significantly best fitted by a single model (Table 2; Fig. 3). Baranyi has the highest number of significantly best fitted datasets. When incorporating the number of successfully converged models, I found that the majority of the datasets successfully fitted by the Baranyi model return the Baranyi model as the one with the lowest AIC that fits significantly better than other models (Table 4). In contrast, only 5-8\% of the datasets successfully fitted by the Logistic, Gompertz, Gompertz msp or Baranyi msp models returned these four models as the ones with significant best fit.
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 \vspace{\baselineskip}
 
 \begin{table}[]
@@ -155,6 +160,8 @@ Baranyi msp  & 7                            & 4                                 
 \end{tabular}
 \end{table}
 
+\vspace{\baselineskip}
+\vspace{\baselineskip}
 \vspace{\baselineskip}
 
 \includegraphics[width=0.5\textwidth]{../results/ID277.pdf}
@@ -219,7 +226,7 @@ Baranyi msp  & 7.692 & 1.861  & 13.285  &
 
 
 \section{Discussion}
-This study aims to identify the best model in modelling bacterial growth across datasets, determined based on the number of successful convergence, the number of best fitted datasets and the time needed to fit the model. Among all non-linear models, the Logistic model has the highest percentage of successful convergence (99.2\% of datasets), and the lowest percentage in the Baranyi msp model. One reason is that the Baranyi model has a more complex equation involving a logarithm term ln (e- + e- -ee). If the dataset produces a negative value, then the logarithmic function would not work and an error message would return \cite{wiscombe_exponential-sum_1977}. For example, a small growth rate, short lag period, and a long total time would lead to a negative value, in which taking its logarithmic term would return an error and the model cannot be fitted. Another reason is because the Baranyi model uses an additional parameter (\(t_{lag}\)). The non-least square method works by searching for a combination of parameter values that is closest to the optimal least-squares solution with the smallest sum of squared residuals possible \cite{see_parameter_2018}. If the starting \(t_{lag}\) value is poorly estimated and too far off from the optimal value, then the model would fail to identify the optimal least-squares solution and cannot converge. This could be the case in this study as both Gompertz and Baranyi models incorporate an extra tlag parameter, while the Logistic model does not have this parameter.  
+This study aims to identify the best model in modelling bacterial growth across datasets, determined based on the number of successful convergence, the number of best fitted datasets and the time needed to fit the model. Among all non-linear models, the Logistic model has the highest percentage of successful convergence (99.2\% of datasets), and the lowest percentage in the Baranyi msp model. One reason is that the Baranyi model has a more complex equation involving a logarithm term $ln(e^{-r*t}+e^{-r*t_{lag}}- e^{-r(t+t_{lag})})$. If the dataset produces a negative value, then the logarithmic function would not work and an error message would return \cite{wiscombe_exponential-sum_1977}. For example, a small growth rate, short lag period, and a long total time would lead to a negative value, in which taking its logarithmic term would return an error and the model cannot be fitted. Another reason is because the Baranyi model uses an additional parameter (\(t_{lag}\)). The non-least square method works by searching for a combination of parameter values that is closest to the optimal least-squares solution with the smallest sum of squared residuals possible \cite{see_parameter_2018}. If the starting \(t_{lag}\) value is poorly estimated and too far off from the optimal value, then the model would fail to identify the optimal least-squares solution and cannot converge. This could be the case in this study as both Gompertz and Baranyi models incorporate an extra tlag parameter, while the Logistic model does not have this parameter.  
 \vspace{\baselineskip}
 
 Based on the lowest AIC scores, the Gompertz msp model gave the highest number of best fitted datasets followed by the Baranyi model. The linear models are generally poorly fitted than the non-linear ones because the former does not take into account biological parameters (such as specific growth rate or lag phase), whereas these are included in the non-linear models \cite{peleg_microbial_2011}. Another reason is that the linear model fits the data points directly using linear regression, whereas the non-linear models are fitted using non-linear least squares, which would adjust parameter values to search for the best model. As a result, there is a higher chance for the best-fitted model to be identified using non-linear approaches. 
@@ -241,9 +248,8 @@ To conclude, Gompertz model has the highest number of successful convergence and
 
 
 
-\bibliographystyle{plainnat}
-\bibliography{Report.bib}
 
-\printbibliography
+\bibliography{Report}
+\bibliographystyle{apalike}
 
 \end{document}

@@ -73,16 +73,16 @@ baranyi_points <- baranyi(t = timepoints,  # time points for gompertz equation
 baranyi_points <- log(baranyi_points)
 
 gompertz_mult_points <- gompertz(t = timepoints,  # time points for gompertz equation
-                            r = para['131_1', 'Gom_mult_Gom_estimate_r'], 
-                            K = para['131_1', 'Gom_mult_Gom_estimate_K'], 
-                            N = para['131_1', 'Gom_mult_Gom_estimate_N0'], 
-                            t_lag = para['131_1', 'Gom_mult_Gom_estimate_t_lag'])
+                                 r = para['131_1', 'Gom_mult_Gom_estimate_r'], 
+                                 K = para['131_1', 'Gom_mult_Gom_estimate_K'], 
+                                 N = para['131_1', 'Gom_mult_Gom_estimate_N0'], 
+                                 t_lag = para['131_1', 'Gom_mult_Gom_estimate_t_lag'])
 
 baranyi_mult_points <- baranyi(t = timepoints,  # time points for gompertz equation
-                          r = para['131_1', 'Bar_mult_Bar_estimate_r'], 
-                          K = para['131_1', 'Bar_mult_Bar_estimate_K'], 
-                          N = para['131_1', 'Bar_mult_Bar_estimate_N0'], 
-                          t_lag = para['131_1', 'Bar_mult_Bar_estimate_t_lag'])
+                               r = para['131_1', 'Bar_mult_Bar_estimate_r'], 
+                               K = para['131_1', 'Bar_mult_Bar_estimate_K'], 
+                               N = para['131_1', 'Bar_mult_Bar_estimate_N0'], 
+                               t_lag = para['131_1', 'Bar_mult_Bar_estimate_t_lag'])
 
 
 
@@ -139,21 +139,21 @@ Qua_ID277_1 <- lm(LogPopBio ~ Time + I(Time^2) , data = Subset_ID277_1) # Fit lm
 timepoints1 <- seq(min(Subset_ID277_1$Time), max(Subset_ID277_1$Time), 0.5) 
 
 logistic_points1 <- logistic(t = timepoints1,  # time points for logistic equation
-                            r = para['277_1', 'Log_estimate_r'], 
-                            K = para['277_1', 'Log_estimate_K'], 
-                            N = para['277_1', 'Log_estimate_N0'])
+                             r = para['277_1', 'Log_estimate_r'], 
+                             K = para['277_1', 'Log_estimate_K'], 
+                             N = para['277_1', 'Log_estimate_N0'])
 
 gompertz_points1 <- gompertz(t = timepoints1,  # time points for gompertz equation
-                            r = para['277_1', 'Gom_estimate_r'], 
-                            K = para['277_1', 'Gom_estimate_K'], 
-                            N = para['277_1', 'Gom_estimate_N0'], 
-                            t_lag = para['277_1', 'Gom_estimate_t_lag'])
+                             r = para['277_1', 'Gom_estimate_r'], 
+                             K = para['277_1', 'Gom_estimate_K'], 
+                             N = para['277_1', 'Gom_estimate_N0'], 
+                             t_lag = para['277_1', 'Gom_estimate_t_lag'])
 
 gompertz_mult_points1 <- gompertz(t = timepoints1,  # time points for gompertz equation
-                                 r = para['277_1', 'Gom_mult_Gom_estimate_r'], 
-                                 K = para['277_1', 'Gom_mult_Gom_estimate_K'], 
-                                 N = para['277_1', 'Gom_mult_Gom_estimate_N0'], 
-                                 t_lag = para['277_1', 'Gom_mult_Gom_estimate_t_lag'])
+                                  r = para['277_1', 'Gom_mult_Gom_estimate_r'], 
+                                  K = para['277_1', 'Gom_mult_Gom_estimate_K'], 
+                                  N = para['277_1', 'Gom_mult_Gom_estimate_N0'], 
+                                  t_lag = para['277_1', 'Gom_mult_Gom_estimate_t_lag'])
 
 
 
@@ -193,10 +193,10 @@ Cub_ID259_1 <- lm(LogPopBio ~ Time + I(Time^2) + I(Time^3), data = Subset_ID259_
 timepoints2 <- seq(min(Subset_ID259_1$Time), max(Subset_ID259_1$Time), 0.5) 
 
 gompertz_points2 <- gompertz(t = timepoints2,  # time points for gompertz equation
-                            r = para['259_1', 'Gom_estimate_r'], 
-                            K = para['259_1', 'Gom_estimate_K'], 
-                            N = para['259_1', 'Gom_estimate_N0'], 
-                            t_lag = para['259_1', 'Gom_estimate_t_lag'])
+                             r = para['259_1', 'Gom_estimate_r'], 
+                             K = para['259_1', 'Gom_estimate_K'], 
+                             N = para['259_1', 'Gom_estimate_N0'], 
+                             t_lag = para['259_1', 'Gom_estimate_t_lag'])
 
 df22 <- data.frame(timepoints2, gompertz_points2)
 df22$model <- "Gompertz model"
@@ -214,6 +214,7 @@ combineplot2 <- ggplot(Subset_ID259_1, aes(x = Time, y = LogPopBio)) +
 
 print(combineplot2)
 dev.off()
+
 
 
 
