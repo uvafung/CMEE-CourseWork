@@ -9,6 +9,7 @@ Data required to run the coding scripts can be downloaded from the following [re
 
 #### Languages:
 R version 3.6.3
+bash version 3.2.57(1)
 
 #### Interactive interface:
 RStudio 2021.09.0
@@ -16,6 +17,9 @@ RStudio 2021.09.0
 ***********
 #### Dependencies and special packages:
 A UNIX based Operating System is needed to run the projects. Linux and Mac OS are both possible options. Linux Ubuntu can be downloaded [here](https://ubuntu.com/)
+
+Latex version pdfTex 3.141592653-2.6-1.40.22
+
 
 
 ******************
@@ -25,35 +29,49 @@ A UNIX based Operating System is needed to run the projects. Linux and Mac OS ar
 ###### R version 3.6.3 for Linux can be installed [here](https://cran.r-project.org/)
 ###### RStudio 2021.09.0 can be installed [here](https://www.rstudio.com/products/rstudio/download/)
 
+###### Install  LaTeX with the following code:
 
+*for Linux*
+```Bash
+sudo apt-get install texlive-full texlive-fonts-recommended texlive-pictures texlive-latex-extra imagemagick    
+```
+
+
+*for Mac*
+```bash
+brew install texlive-full texlive-fonts-recommended texlive-pictures texlive-latex-extra imagemagick
+```           
 
 ***********
 
 #### Project structure and usage:
 This project contains four folders: code, data, results, sandbox; and a README file.
 
-Code stores all the codes written for the MiniProject. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
+Code stores all the codes written for the MiniProject. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox stores scripts used for experimental purposes.
 
 ###### Files in code:
 
-    Python scripts --
-        LV1.py: produce consumer resource dynamics figures
-        oaks_debugme.py: runs a function that finds and returns oak species, with unit testing
-        profileme.py: profiling code to speed up computational process
-        profileme2.py: faster code profiling
-        TestR.py: test the process of running R scripts from Python
-        timeitme.py: compares the speed of loops, list comprehensions and join methods for strings
+    R scripts --
+        DataPrep.R: Data wrangling to filter good quality datasets for analysis.
+        ModFitting: Model fitting and returns analysis output csv files to be stored in data.
+        ModAssumpCheck.R: Check that the assumptions of model fitting are met.
+        SearchBestMod.R: Search for the best model based on AIC scores.
+        ModPlotting_para: Plot model fitting results of selected datasets.
 
-    R script --
-        TestR.R: run by TestR.py to test running R scripts from Python
-
-    Jupyter notebook --
-        MyFirstJupyterNb.ipynb: running Python and R commands with Jupyter Notebook
+    latex file -- 
+        Report.tex: contains the report written in latex
+        
+    bash script --
+        RunAnalysis.sh: run all the R scripts for analysis and compiles the final report from latex to pdf
+    
+    bibTex file:
+    Report.bib: stores the bibliography used in the report
 
 
 
 ###### Files in data:
-    TestOaksData.csv
+    LogisticGrowthData.csv: contains all the datasets
+    LogisticGrowthMetaData.csv: description for each column of the datasets
 
 
 *****************

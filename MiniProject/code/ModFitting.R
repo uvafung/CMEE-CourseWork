@@ -808,21 +808,13 @@ write.csv(Augment_baranyi_multstart_results, "../data/Augment_baranyi_multstart_
 ############## Time needed to run each model function ####################
 ##########################################################################
 system.time({ Tidy_OLS(data) })
-system.time({ Glance_OLS(data) })
 system.time({ Tidy_Qua(data) })
-system.time({ Glance_Qua(data) })
 system.time({ Tidy_Cub(data) })
-system.time({ Glance_Cub(data) })
 system.time({ Tidy_logistic(data) })
-system.time({ Glance_logistic(data) })
 system.time({ Tidy_gompertz(data) })
-system.time({ Glance_gompertz(data) })
 system.time({ Tidy_gompertz_multstart(data) })
-system.time({ Glance_gompertz_multstart(data) })
 system.time({ Tidy_baranyi(data) })
-system.time({ Glance_baranyi(data) })
 system.time({ Tidy_baranyi_multstart(data) })
-system.time({ Glance_baranyi_multstart(data) })
 
 
 
