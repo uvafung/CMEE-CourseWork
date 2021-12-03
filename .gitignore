@@ -8,6 +8,7 @@ week1/code/*.log
 week1/code/.txt
 week3/sandbox/
 week7/sandbox/
+MiniProject/sandbox/
 
 #Keep gitkeep
 !week1/results/.gitkeep
@@ -18,5 +19,9 @@ week7/sandbox/
 !week3/sandbox/.gitkeep
 !week7/sandbox/.gitkeep
 !week7/results/.gitkeep
+!MiniProject/sandbox/.gitkeep
+!MiniProject/results/.gitkeep
+
+
 
 
