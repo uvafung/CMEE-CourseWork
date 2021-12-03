@@ -75,8 +75,9 @@ Code stores all the codes written for the MiniProject. Data stores all the data 
     LogisticGrowthMetaData.csv: description for each column of the datasets
 
 
-###### Troubleshoot!!!
-    If you encounter a prompt in the terminal while compiling the latex report, type in quit() then enter. The sysytem will require you to repeat this step for three times. Afterwards the report in pdf format should be generated in the code directory.
+***********
+#### Troubleshoot!!!
+If you encounter a prompt in the terminal while compiling the latex report, type in quit() then enter. The sysytem will require you to repeat this step for three times. Afterwards the report in pdf format should be generated in the code directory.
 
 *****************
 #### Author name and contact:
