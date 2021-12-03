@@ -109,7 +109,7 @@ names(df5) <- c("Time", "LogPopBio", "model")
 
 model_frame <- rbind(df1, df2, df3, df4, df5)
 
-pdf("../results/ID131.pdf", height=6, width=6) 
+pdf("../results/ID131.pdf", height=7, width=7) 
 combineplot <- ggplot(Subset_ID131_1, aes(x = Time, y = LogPopBio)) +
   geom_point(size = 2.5) +
   geom_smooth(method = "lm", aes(colour = "OLS model"), se = F) + # line for OLS
@@ -171,7 +171,7 @@ names(df41) <- c("Time", "LogPopBio", "model")
 
 model_frame1 <- rbind(df11, df21, df41)
 
-pdf("../results/ID277.pdf", height=6, width=6) 
+pdf("../results/ID277.pdf", height=7, width=7) 
 combineplot1 <- ggplot(Subset_ID277_1, aes(x = Time, y = LogPopBio)) +
   geom_point(size = 2.5) +
   geom_smooth(method = "lm", aes(colour = "OLS model"), se = F) + # line for OLS
@@ -202,7 +202,7 @@ df22 <- data.frame(timepoints2, gompertz_points2)
 df22$model <- "Gompertz model"
 names(df22) <- c("Time", "LogPopBio", "model")
 
-pdf("../results/ID259.pdf", height=6, width=6) 
+pdf("../results/ID259.pdf", height=7, width=7) 
 combineplot2 <- ggplot(Subset_ID259_1, aes(x = Time, y = LogPopBio)) +
   geom_point(size = 2.5) +
   geom_smooth (method= "lm", aes(colour = "Cubic model"), formula = y ~ x + I(x^2) + I(x^3), se=F) +  # line for cubic equation
