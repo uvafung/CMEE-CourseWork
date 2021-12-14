@@ -269,7 +269,7 @@ cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interva
   while ((proc.time()[["elapsed"]] - start_time) < wall_time_sec ){
     starting_com <- neutral_generation_speciation(starting_com, speciation_rate)
     gen <- gen + 1
-    print(gen) # showing how many generations have been run
+    # print(gen) showing how many generations have been run
     if (gen <= burn_in_generations){ # within burn-in period
       if (gen %% interval_rich == 0){ # at each interval within burn-in
         interval_burnin_spp_richness <- c(interval_burnin_spp_richness, species_richness(starting_com)) # store the series of species richness per interval
@@ -304,7 +304,9 @@ process_cluster_results <- function()  {
 }
 
 plot_cluster_results <- function()  {
-    # clear any existing graphs and plot your graph within the R window
+    
+  
+  graphics.off()# clear any existing graphs and plot your graph within the R window
     # load combined_results from your rda file
     # plot the graphs
     
@@ -313,73 +315,134 @@ plot_cluster_results <- function()  {
 
 # Question 21
 question_21 <- function()  {
-    
-  return("type your written answer here")
+  fractal_dimension = log(8) / log(3)
+  print(fractal_dimension)
+  return("This fractal has a width of 3 and size of 8. As the size of a fractal is equal to its width to the power of fractal dimension, the dimension can be calculated by log(size) / log(width). The dimension of this fractal is 1.892789.")
 }
 
 # Question 22
 question_22 <- function()  {
-    
-  return("type your written answer here")
+  fractal_dimension = log(20) / log(3)
+  print(fractal_dimension)
+  return("This fractal has a width of 3 and size of 20. As the size of a fractal is equal to its width to the power of fractal dimension, the dimension can be calculated by log(size) / log(width). The dimension of this fractal is hence log(20) / log(3) = 2.726833.")
 }
 
 # Question 23
 chaos_game <- function()  {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off() # clear any existing graphs
+  A <- c(0,0)
+  B <- c(3,4)
+  C <- c(4,1)
+  X <- c(0,0)
+  df <- as.data.frame(rbind(A, B, C), stringsAsFactors = FALSE)
+  names(df) <- c('x' , 'y') # store values of A/B/C in dataframe for plotting
+  plot(df, pch = 16, cex = 0.3)
   
-  return("type your written answer here")
+  for (i in 1:10000) {
+    random_sample <- sample(1:3, 1) # randomly sample points A/B/C
+   
+     if (random_sample == 1) { 
+      X = (X+A)/2  # Moving towards A
+    } 
+    
+    if (random_sample == 2) { 
+      X = (X+B)/2 # Moving towards B
+    } 
+    
+    if (random_sample == 3) {
+      X = (X+C)/2 # Moving towards C
+    }
+    points(X[1],X[2], pch = 16, cex = 0.3) # plot the new position of X
+
+  }
+  
+  return("The code produces a Sierpinski gasket.")
 }
 
 # Question 24
 turtle <- function(start_position, direction, length)  {
-    
-  return() # you should return your endpoint here.
+    x = start_position[1] + cos(direction) * length #new position of x coordinate
+    y = start_position[2] + sin(direction) * length #new position of y coordinate
+    new_position = c(x,y)
+    lines(c(x, start_position[1]), c(y, start_position[2])) # draw a line connecting start_position and new_position
+  return(new_position) # you should return your endpoint here.
 }
 
 # Question 25
 elbow <- function(start_position, direction, length)  {
-  
+  new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
+  new_direction = direction - pi/4
+  new_length = length * 0.95
+  turtle(new_position, new_direction, new_length)
 }
 
 # Question 26
 spiral <- function(start_position, direction, length)  {
-  
-  return("type your written answer here")
+  new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
+  if (length > 0.001){
+    new_direction = direction - pi/4
+    new_length = length * 0.95
+    spiral(new_position, new_direction, new_length)
+  }
+  return("An error is produced -- Error: C stack usage  7971888 is too close to the limit. This happens because a recursive function is called. In this function, the spiral function is called within itself, so the spiral function will run recursively and never end. To stop this from running non-stop, we could specify the minimum length of the line. If the length drops below a certain threshold, the spiral function will not run and the drawing process will stop.")
 }
 
 # Question 27
 draw_spiral <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-  
+  graphics.off() # clear any existing graphs
+  plot(1, type="n", xlab="", ylab="", xlim=c(0, 10), ylim=c(0, 10)) # create empty plot
+  spiral(start_position, direction, length)
 }
 
 # Question 28
 tree <- function(start_position, direction, length)  {
-  
+  new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
+  if (length > 0.001){
+    tree(new_position, direction - pi/4, length * 0.65) # turn right
+    tree(new_position, direction + pi/4, length * 0.65) # turn left
+  }
 }
 
 draw_tree <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-
+  graphics.off() # clear any existing graphs 
+  plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5)) # create empty plot
+  tree(c(2.5,0), pi/2, 1) # suitable parameters to draw a tree
 }
 
 # Question 29
 fern <- function(start_position, direction, length)  {
-  
+  new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
+  if (length > 0.001){
+    fern(new_position, direction, length * 0.87) # go straight on
+    fern(new_position, direction + pi/4, length * 0.38) # turn left
+  }
 }
 
 draw_fern <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-
+  graphics.off() # clear any existing graphs 
+  plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5)) # create empty plot
+  fern(c(2.5,0), pi/2, 0.5) # suitable parameters to draw a fern
 }
 
 # Question 30
 fern2 <- function(start_position, direction, length, dir)  {
-  
+  new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
+  x = new_position[1] + cos(direction) * length /4  #new position of x coordinate
+  y = new_position[2] + sin(direction) * length /4  #new position of y coordinate
+  right_position = c(x,y)
+  a = new_position[1] - cos(direction) * length /4  #new position of x coordinate
+  b = new_position[2] - sin(direction) * length /4  #new position of y coordinate
+  left_position = c(a,b)
+  if (length > 0.01){
+    fern2(new_position, direction, length * 0.87, 1) # go straight on
+    fern2(left_position, direction + pi/4, length * 0.38, -1) # turn left
+    fern2(right_position, direction - pi/4, length * 0.38, 1) # turn right
+  }
 }
 draw_fern2 <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-
+  graphics.off() # clear any existing graphs 
+  plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5)) # create empty plot
+  fern2(c(2.5,0), pi/2, 0.5, 1) # suitable parameters to draw a fern
 }
 
 # Challenge questions - these are optional, substantially harder, and a maximum of 16% is available for doing them.  
@@ -418,7 +481,26 @@ Challenge_E <- function() {
 
 # Challenge question F
 Challenge_F <- function() {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off()
+  fern2 <- function(start_position, direction, length, dir)  {
+    new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
+    x = new_position[1] + cos(direction) * length /4  #new position of x coordinate
+    y = new_position[2] + sin(direction) * length /4  #new position of y coordinate
+    right_position = c(x,y)
+    a = new_position[1] - cos(direction) * length /4  #new position of x coordinate
+    b = new_position[2] - sin(direction) * length /4  #new position of y coordinate
+    left_position = c(a,b)
+    if (length > 0.001){
+      fern2(new_position, direction, length * 0.87, 1) # go straight on
+      fern2(left_position, direction + pi/4, length * 0.25, -1) # turn left
+      fern2(right_position, direction - pi/4, length * 0.25, 1) # turn right
+    }
+  }
+  draw_fern2 <- function()  {
+    graphics.off() # clear any existing graphs 
+    plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5)) # create empty plot
+    fern2(c(2.5,0), pi/2, 0.5, 1) # suitable parameters to draw a fern
+  }
   
   return("type your written answer here")
 }
