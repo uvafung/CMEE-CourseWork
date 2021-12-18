@@ -352,7 +352,7 @@ process_cluster_results <- function() {
   }
   
   ###### Community size = 5000 -- burn-in generations changed to 2*com_size = 10000 generations
-  octave_sum_com5000 = c() # simulation 76, octave gen 81
+  octave_sum_com5000 = c() # simulation 76, octave gen 21
   total_com5000 <- c()
   
   for (a in 76:100){
@@ -458,7 +458,7 @@ chaos_game <- function()  {
 }
 
 # Question 24
-turtle <- function(start_position = c(0,0), direction = pi/3, length = 1)  {
+turtle <- function(start_position, direction, length)  {
     x = start_position[1] + cos(direction) * length #new position of x coordinate
     y = start_position[2] + sin(direction) * length #new position of y coordinate
     new_position = c(x,y)
@@ -467,7 +467,7 @@ turtle <- function(start_position = c(0,0), direction = pi/3, length = 1)  {
 }
 
 # Question 25
-elbow <- function(start_position = c(0,0), direction = pi/3, length = 1)  {
+elbow <- function(start_position, direction, length)  {
   new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
   new_direction = direction - pi/4
   new_length = length * 0.95
@@ -475,7 +475,7 @@ elbow <- function(start_position = c(0,0), direction = pi/3, length = 1)  {
 }
 
 # Question 26
-spiral <- function(start_position = c(1,2), direction = 14, length = 1)  {
+spiral <- function(start_position, direction, length)  {
   new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
   if (length > 0.001){
     new_direction = direction - pi/4
@@ -493,7 +493,7 @@ draw_spiral <- function()  {
 }
 
 # Question 28
-tree <- function(start_position = c(2,0), direction = pi/2, length = 0.5)  {
+tree <- function(start_position, direction, length)  {
   new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
   if (length > 0.001){
     tree(new_position, direction - pi/4, length * 0.65) # turn right
@@ -508,7 +508,7 @@ draw_tree <- function()  {
 }
 
 # Question 29
-fern <- function(start_position = c(2,0), direction = pi/2, length = 0.5)  {
+fern <- function(start_position, direction, length)  {
   new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
   if (length > 0.001){
     fern(new_position, direction, length * 0.87) # go straight on
@@ -523,7 +523,7 @@ draw_fern <- function()  {
 }
 
 # Question 30
-fern2 <- function(start_position = c(2,0), direction = pi/2, length = 0.5, dir = 1)  {
+fern2 <- function(start_position, direction, length, dir)  {
   new_position = turtle(start_position, direction, length) # return the new position of the vector after drawing the first line
   if (length > 0.005){
     fern2(new_position, direction, length * 0.87, -dir)
@@ -565,12 +565,218 @@ Challenge_D <- function() {
 
 # Challenge question E
 Challenge_E <- function() {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off() # clear any existing graphs
   
-  return("type your written answer here")
+  par(mfrow = c(2,2))
+  
+  # Original position
+  A <- c(0,0)
+  B <- c(3,4)
+  C <- c(4,1)
+  X <- c(0,0) 
+  df <- as.data.frame(rbind(A, B, C), stringsAsFactors = FALSE)
+  names(df) <- c('x' , 'y') # store values of A/B/C in dataframe for plotting
+  plot(df, pch = 16, cex = 0.3, main = "Starting X at (0,0)")
+  
+  for (i in 1:10000) {
+    random_sample <- sample(1:3, 1) # randomly sample points A/B/C
+    
+    if (random_sample == 1) { 
+      X = (X+A)/2  # Moving towards A
+    } 
+    
+    if (random_sample == 2) { 
+      X = (X+B)/2 # Moving towards B
+    } 
+    
+    if (random_sample == 3) {
+      X = (X+C)/2 # Moving towards C
+    }
+    points(X[1],X[2], pch = 16, cex = 0.3) # plot the new position of X
+    
+  }
+  
+  
+  # Change position of X from (0,0) to (2,2)
+  A <- c(0,0)
+  B <- c(3,4)
+  C <- c(4,1)
+  X <- c(2,2) # New position of X
+  df <- as.data.frame(rbind(A, B, C), stringsAsFactors = FALSE)
+  names(df) <- c('x' , 'y') # store values of A/B/C in dataframe for plotting
+  plot(df, pch = 16, cex = 0.3, main = "Starting X at (2,2)")
+  
+  for (i in 1:10000) {
+    random_sample <- sample(1:3, 1) # randomly sample points A/B/C
+    
+    if (random_sample == 1) { 
+      X = (X+A)/2  # Moving towards A
+    } 
+    
+    if (random_sample == 2) { 
+      X = (X+B)/2 # Moving towards B
+    } 
+    
+    if (random_sample == 3) {
+      X = (X+C)/2 # Moving towards C
+    }
+    points(X[1],X[2], pch = 16, cex = 0.3) # plot the new position of X
+    
+  }
+  
+  
+  # Change position of X from (0,0) to (5,5)
+  A <- c(0,0)
+  B <- c(3,4)
+  C <- c(4,1)
+  X <- c(5,5) # New position of X -- outside the boundary of A/B/C
+  df <- as.data.frame(rbind(A, B, C), stringsAsFactors = FALSE)
+  names(df) <- c('x' , 'y') # store values of A/B/C in dataframe for plotting
+  plot(df, pch = 16, cex = 0.3, main = "Starting X at (5,5)")
+  
+  for (i in 1:10000) {
+    random_sample <- sample(1:3, 1) # randomly sample points A/B/C
+    
+    if (random_sample == 1) { 
+      X = (X+A)/2  # Moving towards A
+    } 
+    
+    if (random_sample == 2) { 
+      X = (X+B)/2 # Moving towards B
+    } 
+    
+    if (random_sample == 3) {
+      X = (X+C)/2 # Moving towards C
+    }
+    points(X[1],X[2], pch = 16, cex = 0.3) # plot the new position of X
+    
+  }
+  
+  # Change distance of movement from half to 1/3
+  A <- c(0,0)
+  B <- c(3,4)
+  C <- c(4,1)
+  X <- c(0,0) # New position of X
+  df <- as.data.frame(rbind(A, B, C), stringsAsFactors = FALSE)
+  names(df) <- c('x' , 'y') # store values of A/B/C in dataframe for plotting
+  plot(df, pch = 16, cex = 0.3, cex.main = 0.9, main = "Distance of movement reduced to 1/3")
+  
+  for (i in 1:10000) {
+    random_sample <- sample(1:3, 1) # randomly sample points A/B/C
+    
+    if (random_sample == 1) { 
+      X = (X+A)/3  # Moving towards A
+    } 
+    
+    if (random_sample == 2) { 
+      X = (X+B)/3 # Moving towards B
+    } 
+    
+    if (random_sample == 3) {
+      X = (X+C)/3 # Moving towards C
+    }
+    points(X[1],X[2], pch = 16, cex = 0.3) # plot the new position of X
+    
+  }
+  
+  return("Changing the starting position of X has no effect on the final shape or size of the Sierpinski Gasket. This is because the moving distance is always half of the distance towards the next point. As a result, the path of X will always return to the original path after enough iterations. However, the Sierpinski Gasket produced is smaller and less detailed than the original one once the movement distance is reduced to 1/3. Since the first step will determine the size of the big traingle in the middle (and therefore the shape of the gasket), a reduction is moving distance will also cuase the size of the final gasket to become smaller.")
 }
 
 # Challenge question F
 Challenge_F <- function() {
-  return("type answer here")
+  graphics.off() # clear any existing graphs
+  
+  par(mfrow = c(2,2))
+  
+  # turtle() with different colours
+  turtle_b <- function(start_position, direction, length)  { 
+    x = start_position[1] + cos(direction) * length #new position of x coordinate
+    y = start_position[2] + sin(direction) * length #new position of y coordinate
+    new_position = c(x,y)
+    lines(c(x, start_position[1]), c(y, start_position[2]), col = "chocolate4") # draw a line connecting start_position and new_position
+    return(new_position) # you should return your endpoint here.
+  }
+  
+  turtle_g <- function(start_position, direction, length)  {
+    x = start_position[1] + cos(direction) * length #new position of x coordinate
+    y = start_position[2] + sin(direction) * length #new position of y coordinate
+    new_position = c(x,y)
+    lines(c(x, start_position[1]), c(y, start_position[2]), col = "chartreuse4") # draw a line connecting start_position and new_position
+    return(new_position) # you should return your endpoint here.
+  }
+  
+  
+  # Fern -- When length threshold > 0.1
+  fernF_1 <- function(start_position, direction, length, dir)  {
+    new_position = turtle_b(start_position, direction, length) # return the new position of the vector after drawing the first line
+    if (length > 0.1){
+      fernF_1(new_position, direction, length * 0.87, -dir)
+      fernF_1(new_position, direction + dir * pi/4, length * 0.38, dir) 
+    }
+  }
+  
+  draw_fernF_1 <- function()  {
+    plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5), 
+         cex.main = 0.8, main = "Fern with few blades: Length threshold > 0.1") # create empty plot
+    fernF_1(c(2,0), pi/2, 0.5, 1) # suitable parameters to draw a fern
+  }
+  
+  draw_fernF_1()
+  
+  
+  # Fern -- When length threshold > 0.001
+  fernF_3 <- function(start_position, direction, length, dir)  {
+    new_position = turtle_g(start_position, direction, length) # return the new position of the vector after drawing the first line
+    if (length > 0.001){
+      fernF_3(new_position, direction, length * 0.87, -dir)
+      fernF_3(new_position, direction + dir * pi/4, length * 0.38, dir) 
+    }
+  }
+  
+  draw_fernF_3 <- function()  {
+    plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5), 
+         cex.main = 0.8, main = "Fern with many blades: Length threshold > 0.001") # create empty plot
+    fernF_3(c(2,0), pi/2, 0.5, 1) # suitable parameters to draw a fern
+  }
+  
+  draw_fernF_3()
+  
+  
+  
+  # Tree -- When length threshold > 0.1
+  treeF_1 <- function(start_position, direction, length)  {
+    new_position = turtle_b(start_position, direction, length) # return the new position of the vector after drawing the first line
+    if (length > 0.1){
+      treeF_1(new_position, direction - pi/4, length * 0.65) # turn right
+      treeF_1(new_position, direction + pi/4, length * 0.65) # turn left
+    }
+  }
+  
+  draw_treeF_1 <- function()  {
+    plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5), 
+         cex.main = 0.8, main = "Tree in winter: Length threshold > 0.1") # create empty plot
+    treeF_1(c(2,0), pi/2, 0.5) # suitable parameters to draw a tree
+  }
+  
+  draw_treeF_1()
+  
+  # Tree -- When length threshold > 0.001
+  treeF_3 <- function(start_position, direction, length)  {
+    new_position = turtle_g(start_position, direction, length) # return the new position of the vector after drawing the first line
+    if (length > 0.001){
+      treeF_3(new_position, direction - pi/4, length * 0.65) # turn right
+      treeF_3(new_position, direction + pi/4, length * 0.65) # turn left
+    }
+  }
+  
+  draw_treeF_3 <- function()  {
+    plot(1, type="n", xlab="", ylab="", xlim=c(0, 5), ylim=c(0, 5), 
+         cex.main = 0.8, main = "Tree in summer: Length threshold > 0.001") # create empty plot
+    treeF_3(c(2,0), pi/2, 0.5) # suitable parameters to draw a tree
+  }
+  
+  draw_treeF_3()
+  
+  
+  return("As the line thresholds become smaller, the images produced become more detailed and sophisticated. However, more time is needed to run the program.")
  } 
