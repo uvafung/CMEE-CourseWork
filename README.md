@@ -17,20 +17,29 @@ A UNIX based Operating System is needed to run the projects. Linux and Mac OS ar
 Linux Ubuntu can be downloaded [here](https://ubuntu.com/)
 *****************
 #### Project structure and usage:
-This project contains 5 folders, one for each week's submission. Description and instructions can be found in each week's README.md file.
+This project contains 10 folders, among which the weekly folders (week1, week2, week3, week7) contain files for the CMEE computing weeks assessments. Detailed description and instructions can be found in each folder's README.md file.
 
-In each folder, there are four subfolders: code, data, results, sandbox. Code stores all the codes written for each week's practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
 
-###### Coding scripts and data stored in the weekly folders:
+###### Coding scripts and data stored in the folders:
 Week 1: For week 1 practicals -- including UNIX, shell scripts, LaTeX
 
 Week 2: For week 2 practicals -- Python I scripts
 
 Week 3: For week 3 practicals -- R and data visualization
 
-Week 7: For week 7 practicals -- Python II 
+Week 7: For week 7 practicals -- Python II
 
-MiniProject: For MiniProject submission
+MiniProject: MiniProject submission
+
+HPC_uf21: Week 10 HPC practicals
+
+Project: MRes project proposal and coding CourseWork
+
+GIS: GIS week practicals
+
+Genomics: Genomics week practicals
+
+Feedback: Feedback on CMEE weekly submissions
 
 ************************************
 #### Author name and contact:
