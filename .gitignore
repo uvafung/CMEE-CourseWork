@@ -11,17 +11,7 @@ week7/sandbox/
 MiniProject/sandbox/
 
 #Keep gitkeep
-!week1/results/.gitkeep
-!week1/sandbox/.gitkeep
-!week2/results/.gitkeep
-!week2/sandbox/.gitkeep
-!week3/results/.gitkeep
-!week3/sandbox/.gitkeep
-!week7/sandbox/.gitkeep
-!week7/results/.gitkeep
-!MiniProject/sandbox/.gitkeep
-!MiniProject/results/.gitkeep
-
+!*/.gitkeep
 
 
 
