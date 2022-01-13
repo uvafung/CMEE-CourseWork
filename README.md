@@ -1,13 +1,15 @@
 # My CMEE CourseWork Repository
 
-This repository contains all coursework for the computing component of Computational Methods in Ecology and Evolution (CMEE) Master's Course .
+This repository contains all coursework for the computing component of Computational Methods in Ecology and Evolution (CMEE) Master's Course.
 Instructions to run the codes can be found [here](https://mhasoba.github.io/TheMulQuaBio/intro.html).
 Data required to run the coding scripts can be downloaded from the following [repository](https://github.com/mhasoba/TheMulQuaBio).
 ******************
 #### Languages:
 bash version 3.2.57(1)
 
-Please also refer to the README.md in each week's folder for specific languages applicable for that week
+Please also refer to the README.md in each week's folder for specific languages applicable for that week.
+
+Note that in order to run most of the R scripts, it is expected that your RStudio has installed certain packages (including but not limited to ). Please refer to each R script for the full list of packages required.
 
 *****************
 #### Dependencies:
