@@ -9,7 +9,7 @@ bash version 3.2.57(1)
 
 Please also refer to the README.md in each week's folder for specific languages applicable for that week.
 
-Note that in order to run most of the R scripts, it is expected that your RStudio has installed certain packages (including but not limited to ). Please refer to each R script for the full list of packages required.
+Note that in order to run most of the R scripts, it is expected that your RStudio has installed certain packages (including but not limited to plyr, dplyr, tidyverse). Please refer to each R script for the full list of packages required.
 
 *****************
 #### Dependencies:
