@@ -26,7 +26,7 @@ A UNIX based Operating System is needed to run the projects. Linux and Mac OS ar
 #### Project structure and usage:
 This project contains four folder: code, data, results, sandbox; and a README file.
 
-Code stores all the codes written for week 2 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes. Note that this week's sandbox contains some coding scripts as instructed in [Biological Computing in Python I](https://mhasoba.github.io/TheMulQuaBio/notebooks/05-Python_I.html). Conseqeuently this sandbox is excluded in gitignore.
+Code stores all the codes written for week 2 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes. Note that this week's sandbox contains some coding scripts as instructed in [Biological Computing in Python I](https://mhasoba.github.io/TheMulQuaBio/notebooks/05-Python_I.html#python-input-output). Conseqeuently this sandbox is excluded in gitignore.
 
 ###### Files in code:
 
