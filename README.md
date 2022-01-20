@@ -19,7 +19,7 @@ A UNIX based Operating System is needed to run the projects. Linux and Mac OS ar
 Linux Ubuntu can be downloaded [here](https://ubuntu.com/)
 *****************
 #### Project structure and usage:
-This project contains 10 folders, among which the weekly folders (week1, week2, week3, week7) contain files for the CMEE computing weeks assessments. Detailed description and instructions can be found in each folder's README.md file.
+This project contains 10 folders, among which the weekly folders (week1, week2, week3, week7) contain files for the CMEE computing weeks assessments. Groupwork practicals are stored in week2, week3 and week7 folders. Detailed description and instructions can be found in each folder's README.md file.
 
 
 ###### Coding scripts and data stored in the folders:
