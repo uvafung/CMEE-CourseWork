@@ -57,7 +57,6 @@ Code stores all the codes written for week 2 practicals. Data stores all the dat
 
 ###### Files in data:
     bodymass.csv
-    JustOaksData.csv
     testcsv.csv
     TestOaksData.csv
     seq.txt
