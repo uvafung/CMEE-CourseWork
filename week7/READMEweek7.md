@@ -35,6 +35,7 @@ Code stores all the codes written for week 7 practicals. Data stores all the dat
 ###### Files in code:
 
     Python scripts --
+        grp_oaks_debugme.py: search for oaks in a given dataset while handling for slight typos (GROUPWORK)
         LV1.py: produce consumer resource dynamics figures
         oaks_debugme.py: runs a function that finds and returns oak species, with unit testing
         profileme.py: profiling code to speed up computational process
@@ -52,6 +53,8 @@ Code stores all the codes written for week 7 practicals. Data stores all the dat
 
 ###### Files in data:
     TestOaksData.csv
+    
+    *Note that new data files will be generated after running grp_oaks_debugme.py and oaks_debugme.py as instructed
 
 
 *****************

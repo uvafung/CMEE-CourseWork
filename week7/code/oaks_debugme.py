@@ -20,37 +20,26 @@ def is_an_oak(name):
     
     >>> is_an_oak('Quercus robur')
     True
-
     >>> is_an_oak('Fraxinus excelsior')
     False
-
     >>> is_an_oak('Pinus sylvestris')
     False
-
     >>> is_an_oak('Quercus cerris')
     True
-
     >>> is_an_oak('Quercus petraea')
     True
-
     >>> is_an_oak('Quercus ')
     True
-
     >>> is_an_oak('Quercus abcsdecd')
     True
-
     >>> is_an_oak('Quercusabscd robur')
     False
-
     >>> is_an_oak('Quercas ')
     False
-
     >>> is_an_oak('Quercusss')
     False
-
     >>> is_an_oak('Happyquercusss')
     False
-
     
     """
     
@@ -62,7 +51,7 @@ def main(argv):
     """print the genus of each species and save the oak species in a new csv output file"""
 
     f = open('../data/TestOaksData.csv','r')
-    g = open('../results/JustOaksData.csv','w') # write the output in a new csv file
+    g = open('../data/JustOaksData_indiv.csv','w') # write the output in a new csv file
     taxa = list(csv.reader(f)) # read TestOaksData.csv as a list so that it can be used in indexing
     csvwrite = csv.writer(g)
     oaks = set()
@@ -83,4 +72,3 @@ if (__name__ == "__main__"):
     status = main(sys.argv)
 
 doctest.testmod()
-
