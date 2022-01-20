@@ -31,6 +31,8 @@ Code stores all the codes written for week 2 practicals. Data stores all the dat
 ###### Files in code:
 
     Code scripts --
+        align_seqs_better.py: take any two fasta sequences (in separate files) to be aligned as input, taking into account all the equally-best alignments, and save output in both txt and pickle formats (GROUPWORK)
+        align_seqs_fasta.py: take any two fasta sequences (in separate files) to be aligned as input (GROUPWORK)
         align_seqs.py: aligns two DNA sequences
         basic_csv.py: read csv file and write output containing only species name and body mass
         basic_io1.py: file input
@@ -59,6 +61,10 @@ Code stores all the codes written for week 2 practicals. Data stores all the dat
     testcsv.csv
     TestOaksData.csv
     seq.txt
+    407228326.fasta
+    407228412.fasta
+    seq1.fasta
+    seq2.fasta
 
 ###### Files in sandbox:
     cft.txt
