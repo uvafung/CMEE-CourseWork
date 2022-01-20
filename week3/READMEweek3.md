@@ -59,11 +59,18 @@ Code stores all the codes written for week 3 practicals. Data stores all the dat
         plotLin.R: annotating a linear regression plot
         PP_Regress.R: produce regression results for Predator mass vs Prey mass
         GPDD_Data.R: mapping the Global Population Dynamics Database (GPDD) on a world map
+        get_TreeHeight.R: R script that calculates tree heights for all trees and saves output as new csv (GROUPWORK)
+        get_TreeHeight.py: Python script that calculates tree heights for all trees and saves output as new csv (GROUPWORK)
+        run_get_TreeHeight.sh: Bash script that runs both get_TreeHeight.R and run_get_TreeHeight.sh (GROUPWORK)
+        TAutoCorr.R: calculates the correlation between pairs of years to analysis temperature trends in Florida (GROUPWORK)
+        PP_Regress_loc.R: calculates linear regression on subsets of the data corresponding to i) Feeding Type, ii) Predator life Stage and iii) Location (GROUPWORK)
 
     Latex script --
         Florida_warming.tex: generating Latex document for Florida warming data
+        TAutoCorr.tex: latex file for compiling a report on Florida temperatures over years (GROUPWORK)
 
-
+    Bib file --
+        Floridabiblio.bib: stores the bibliography for the report (GROUPWORK)
 
 
 ###### Files in data:
