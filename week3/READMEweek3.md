@@ -83,7 +83,8 @@ Code stores all the codes written for week 3 practicals. Data stores all the dat
     Results.txt
 
 ###### Files in writeup:
-    TAutoCorr.pdf: report on Florida temperatures over years in pdf format (GROUPWORK)
+    Florida_warming.pdf: report on Florida temperature change over years using correlation 
+    TAutoCorr.pdf: report on Florida temperature change over years in pdf format (GROUPWORK)
 
 *****************
 #### Author name and contact:
