@@ -29,7 +29,7 @@ A UNIX based Operating System is needed to run the projects. Linux and Mac OS ar
 #### Project structure and usage:
 This project contains five folders: code, data, results, sandbox, writeup; and a README file.
 
-Code stores all the codes written for week 3 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty. Writeup stores the report for TAutoCorr in pdf format.
+Code stores all the codes written for week 3 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty. Writeup stores the compiled reports for Florida_warming.tex and TAutoCorr.tex in pdf format.
 
 ###### Files in code:
 
