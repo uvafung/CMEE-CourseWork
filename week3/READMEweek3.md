@@ -27,9 +27,9 @@ A UNIX based Operating System is needed to run the projects. Linux and Mac OS ar
 ***********
 
 #### Project structure and usage:
-This project contains four folders: code, data, results, sandbox; and a README file.
+This project contains five folders: code, data, results, sandbox, writeup; and a README file.
 
-Code stores all the codes written for week 3 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
+Code stores all the codes written for week 3 practicals. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty. Writeup stores the report for TAutoCorr in pdf format.
 
 ###### Files in code:
 
@@ -82,6 +82,8 @@ Code stores all the codes written for week 3 practicals. Data stores all the dat
     GPDDFiltered.RData
     Results.txt
 
+###### Files in writeup:
+    TAutoCorr.pdf: report on Florida temperatures over years in pdf format (GROUPWORK)
 
 *****************
 #### Author name and contact:
