@@ -80,6 +80,9 @@ camfreq_pred_sites <- camfreq_pred %>% drop_na(Freq_Hedgehog, Freq_Fox, Freq_Bad
 
 write.csv(camfreq_pred_sites, '../../../data/camfreq_prediction_plotting_Aug18.csv') # save another copy without NAs
 
+
+
+#### To generate the plot, start running from this line onwards
 camfreq_pred_sites <- read.csv('../../../data/camfreq_prediction_plotting_Aug18.csv') # reload it for log transformation
 camfreq_pred_sites <- camfreq_pred_sites %>% mutate(log_hog_freq = log(Freq_Hedgehog),
                                                     log_fox_freq = log(Freq_Fox),
@@ -102,14 +105,14 @@ summary(hog)
 fox <- glm(fox_pre ~ Freq_Fox, data = camfreq_pred_sites)
 summary(fox)
 
-bdg <- glm(fox_pre ~ Freq_Fox, data = camfreq_pred_sites)
+bdg <- glm(bdg_pre ~ Freq_Badger, data = camfreq_pred_sites)
 summary(bdg)
 
 ########## plot habitat suitability score vs camera trapping rate 
 
 hog_plot <- ggplot(camfreq_pred_sites, aes(x = hog_pre, y = Freq_Hedgehog)) + # hedgehog
   geom_point(size = 1) + 
-  geom_smooth(method="auto", level=0.95,color="red") +
+  geom_smooth(method="lm", level=0.95,color="red") +
   theme_bw() + theme(panel.border = element_blank(), 
                      panel.grid.major = element_blank(),
                      panel.grid.minor = element_blank(), 
@@ -121,7 +124,7 @@ hog_plot <- ggplot(camfreq_pred_sites, aes(x = hog_pre, y = Freq_Hedgehog)) + # 
 
 fox_plot <- ggplot(camfreq_pred_sites, aes(x = fox_pre, y = Freq_Fox)) +
   geom_point(size = 1) + 
-  geom_smooth(method="auto", level=0.95,color="red") +
+  geom_smooth(method="lm", level=0.95,color="red") +
   theme_bw() + theme(panel.border = element_blank(), 
                      panel.grid.major = element_blank(),
                      panel.grid.minor = element_blank(), 
@@ -132,7 +135,7 @@ fox_plot <- ggplot(camfreq_pred_sites, aes(x = fox_pre, y = Freq_Fox)) +
 
 bdg_plot <- ggplot(camfreq_pred_sites, aes(x = bdg_pre, y = Freq_Badger)) +
   geom_point(size = 1) + 
-  geom_smooth(method="auto", level=0.95,color="red") +
+  geom_smooth(method="lm", level=0.95,color="red") +
   theme_bw() + theme(panel.border = element_blank(), 
                      panel.grid.major = element_blank(),
                      panel.grid.minor = element_blank(), 
@@ -148,55 +151,55 @@ ggsave("../../../results/CitiSci/AllYear_XMammalPred/habitat_score_cam_rate.pdf"
        width=5, height=7.5, units="in")
 
 
-plot_grid(hog_plot, fox_plot, bdg_plot, align = "hv", axis = "tblr", ncol=1)
+
 
 ### YES log transformation
-log_hog <- glm(hog_pre ~ log_hog_freq_NA, data = camfreq_pred_sites)
-summary(log_hog)
-
-log_fox <- glm(fox_pre ~ log_fox_freq_NA, data = camfreq_pred_sites)
-summary(log_fox)
-
-log_bdg <- glm(fox_pre ~ log_bdg_freq_NA, data = camfreq_pred_sites)
-summary(log_bdg)
-
-########## plot habitat suitability score vs camera trapping rate 
-
-log_hog_plot <- ggplot(camfreq_pred_sites, aes(x = hog_pre, y = log_hog_freq_NA)) + # hedgehog
-  geom_point() + 
-  geom_smooth(method="auto", level=0.95,color="black") +
-  theme_bw() + theme(panel.border = element_blank(), 
-                     panel.grid.major = element_blank(),
-                     panel.grid.minor = element_blank(), 
-                     axis.line = element_line(colour = "black"),
-                     text = element_text(size=15)) +
-  xlab("Predicted habitat suitability score") + ylab("Camera trapping rate")
-
-log_fox_plot <- ggplot(camfreq_pred_sites, aes(x = fox_pre, y = log_fox_freq_NA)) +
-  geom_point() + 
-  geom_smooth(method="auto", level=0.95,color="black") +
-  theme_bw() + theme(panel.border = element_blank(), 
-                     panel.grid.major = element_blank(),
-                     panel.grid.minor = element_blank(), 
-                     axis.line = element_line(colour = "black"),
-                     text = element_text(size=15)) +
-  xlab("Predicted habitat suitability score") + ylab("Camera trapping rate")
-
-log_bdg_plot <- ggplot(camfreq_pred_sites, aes(x = bdg_pre, y = log_bdg_freq_NA)) +
-  geom_point() + 
-  geom_smooth(method="auto", level=0.95,color="black") +
-  theme_bw() + theme(panel.border = element_blank(), 
-                     panel.grid.major = element_blank(),
-                     panel.grid.minor = element_blank(), 
-                     axis.line = element_line(colour = "black"),
-                     text = element_text(size=15)) +
-  xlab("Predicted habitat suitability score") + ylab("Camera trapping rate")
-
-
-log_regress_plot <- gridExtra::grid.arrange(log_hog_plot, log_fox_plot, log_bdg_plot)
-log_regress_plot
-
-
-
-
-
+# log_hog <- glm(hog_pre ~ log_hog_freq_NA, data = camfreq_pred_sites)
+# summary(log_hog)
+# 
+# log_fox <- glm(fox_pre ~ log_fox_freq_NA, data = camfreq_pred_sites)
+# summary(log_fox)
+# 
+# log_bdg <- glm(bdg_pre ~ log_bdg_freq_NA, data = camfreq_pred_sites)
+# summary(log_bdg)
+# 
+# ########## plot habitat suitability score vs camera trapping rate 
+# 
+# log_hog_plot <- ggplot(camfreq_pred_sites, aes(x = hog_pre, y = log_hog_freq_NA)) + # hedgehog
+#   geom_point() + 
+#   geom_smooth(method="auto", level=0.95,color="black") +
+#   theme_bw() + theme(panel.border = element_blank(), 
+#                      panel.grid.major = element_blank(),
+#                      panel.grid.minor = element_blank(), 
+#                      axis.line = element_line(colour = "black"),
+#                      text = element_text(size=15)) +
+#   xlab("Predicted habitat suitability score") + ylab("Camera trapping rate")
+# 
+# log_fox_plot <- ggplot(camfreq_pred_sites, aes(x = fox_pre, y = log_fox_freq_NA)) +
+#   geom_point() + 
+#   geom_smooth(method="auto", level=0.95,color="black") +
+#   theme_bw() + theme(panel.border = element_blank(), 
+#                      panel.grid.major = element_blank(),
+#                      panel.grid.minor = element_blank(), 
+#                      axis.line = element_line(colour = "black"),
+#                      text = element_text(size=15)) +
+#   xlab("Predicted habitat suitability score") + ylab("Camera trapping rate")
+# 
+# log_bdg_plot <- ggplot(camfreq_pred_sites, aes(x = bdg_pre, y = log_bdg_freq_NA)) +
+#   geom_point() + 
+#   geom_smooth(method="auto", level=0.95,color="black") +
+#   theme_bw() + theme(panel.border = element_blank(), 
+#                      panel.grid.major = element_blank(),
+#                      panel.grid.minor = element_blank(), 
+#                      axis.line = element_line(colour = "black"),
+#                      text = element_text(size=15)) +
+#   xlab("Predicted habitat suitability score") + ylab("Camera trapping rate")
+# 
+# 
+# log_regress_plot <- gridExtra::grid.arrange(log_hog_plot, log_fox_plot, log_bdg_plot)
+# log_regress_plot
+# 
+# 
+# 
+# 
+# 
