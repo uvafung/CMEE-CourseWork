@@ -30,9 +30,13 @@ This project contains six folders: Proposal, Thesis, code, data, results, sandbo
 
 Proposal stores all pdfs, documents and tex files necessary for compiling the proposal in a latex format. Thesis stores the final version of the thesis in pdf format. Code stores all the codes written for MRes project. Data stores all the data needed to run the scripts stored in code. Results store the output of coding scripts. Sandbox is used for experimental purposes and is left empty.
 
+ <br />
+
 ###### Files in code:
 This folder contains two subfolders: **CitiSci_modelling_codes** and **sort_data_codes**
-* **CitiSci_modelling_codes** - 2 subfolders
+ <br />
+  <br />
+**CitiSci_modelling_codes** - 2 subfolders
  * **AllYear** contains 3 sets of scripts for selecting buffer scales, model fitting and graph plotting. Each set of script contains 3 scripts and is specific for each target mammal (hedgehogs `HOG`, foxes `FOX` and badgers `BDG`). The `evaluation_3` and `plotting_4` scripts in this folder are specific for modelling with the **inclusion of mammal presence predictors**.
    * `SDM_MAMMAL_citisci_scale_optimize_2_Uva.R` selecting the best buffer scale for each environmental predictor
    * `SDM_MAMMAL_citisci_model_evaluation_3_Uva.R` evaluating the best fitting model and the predictors to be included
@@ -44,12 +48,14 @@ This folder contains two subfolders: **CitiSci_modelling_codes** and **sort_data
    * `SDM_XMammalPred_prob_distance_plot_5.R` plotting the relationship between distance from city centre and habitat suitability score
    * `habitatscore_camfreq.R` plotting the relationship between habitat suitability score and camera trapping rate
 
+ <br />
 
-
-* **sort_data_codes** contains 3 R scripts for sorting GiGL and NBN citizen science mammal data
+**sort_data_codes** contains 3 R scripts for sorting GiGL and NBN citizen science mammal data
    * `sortdata_citisci_GiGL_1a.R` filter GiGL mammal data
    * `sortdata_citisci_NBN_1a.R` filter NBN mammal data
    * `sortdata_citisci_combine_GiGLNBN_1b.R` combine the filtered GiGL and NBN data
+
+ <br />
 
 ###### Files in data:
 
